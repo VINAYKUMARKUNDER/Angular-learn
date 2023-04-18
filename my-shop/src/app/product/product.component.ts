@@ -92,10 +92,17 @@ export class ProductComponent {
 
 
   selectedRadioValue: string = 'All';
+  searchText:string ='';
 
   getFilterAccordingRadioButton(data:string){
     this.selectedRadioValue=data;
-    console.log(this.selectedRadioValue)
+    // console.log(this.selectedRadioValue)
+  }
+
+
+  onSearchText(searchValue:string){
+      this.searchText=searchValue;
+      console.log(this.searchText)
   }
 
 
