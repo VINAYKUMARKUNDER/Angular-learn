@@ -1,0 +1,30 @@
+.main{
+  padding-top:80px;
+}
+
+.card{
+  height: 60vh;
+  margin: 25px;
+  padding: 25px;
+}
+
+h4,h6{
+  font-weight: 400;
+}
+
+.center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+
+.card-table{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: none;
+  word-wrap: break-word;
+}

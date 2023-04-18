@@ -4,11 +4,17 @@ import { ProductComponent } from './product/product.component';
 import { LoginComponent } from './login/login.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ContectComponent } from './contect/contect.component';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
   {
     component:ProductComponent,
     path:'products'
+  },
+
+  {
+    component:CartComponent,
+    path:'cart'
   },
 
   {
