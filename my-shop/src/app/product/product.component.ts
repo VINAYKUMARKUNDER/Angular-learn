@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CartServiceService } from '../cart/cart-service.service';
 
 @Component({
   selector: 'app-product',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent {
+
+  constructor(private cartService : CartServiceService){}
 
   products = [
     {
@@ -106,5 +109,9 @@ export class ProductComponent {
   }
 
 
+  addToCart(product:any){
+    this.cartService.addToCart(product);
+
+  }
 
 }

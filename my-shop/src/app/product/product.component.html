@@ -13,7 +13,7 @@
 
 
 
-<div id="main"> 
+<div id="main">
   <div *ngFor="let product of products" class="product">
     <div class="card" *ngIf="selectedRadioValue==='All' || selectedRadioValue ===  product.category">
      <div *ngIf="searchText==='' || product.title.toLocaleLowerCase().includes(searchText.toLocaleLowerCase())
@@ -28,7 +28,7 @@
         <p class="card-text">${{ product.price }}</p>
         <p class="card-text">rating {{product.rating.rate}}</p>
         <button class="btn btn-primary">View</button>
-        <button class="btn btn-success">Add to Cart</button>
+        <button class="btn btn-success " (click)=addToCart(product) >Add to Cart</button>
       </div>
       </div>
     </div>

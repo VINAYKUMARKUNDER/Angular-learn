@@ -15,6 +15,7 @@ import { SearchComponent } from './search/search.component';
 import { FilterComponent } from './filter/filter.component';
 import { ContectComponent } from './contect/contect.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,8 @@ import { ContectComponent } from './contect/contect.component';
     SearchComponent,
     FilterComponent,
     ContectComponent
+
+
   ],
   imports: [
     BrowserModule,
