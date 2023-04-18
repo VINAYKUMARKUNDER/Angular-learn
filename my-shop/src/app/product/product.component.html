@@ -8,25 +8,22 @@
     [womens_clothing]=" getTotalWomensProduct()" (selectedAccordingRadioButton)="getFilterAccordingRadioButton($event)"
     />
 
-    <ng-cantainer>
-      <div id="main" > 
-        <div *ngFor="let product of products" class="product">
-          <div class="card" *ngIf="selectedRadioValue==='All' || selectedRadioValue ===  product.category">
-            <img class="img" src="{{ product.image }}" alt="Product Image" />
-            <div class="card-body">
-              <h5 class="card-title">{{ product.title }}</h5>
-              <h6 class="card-title">{{ product.category }}</h6>
-              <p class="card-text">{{ product.description }}</p>
-              <p class="card-text">${{ product.price }}</p>
-              <p class="card-text">rating {{product.rating.rate}}</p>
-              <button class="btn btn-primary">View</button>
-              <button class="btn btn-success">Add to Cart</button>
-            </div>
-          </div>
-        </div>
+<div id="main"> 
+  <div *ngFor="let product of products" class="product">
+    <div class="card" *ngIf="selectedRadioValue==='All' || selectedRadioValue ===  product.category">
+     <div *ngIf="searchText==='' || product.title.toLocaleLowerCase().includes(searchText)">
+      <img class="img" src="{{ product.image }}" alt="Product Image" />
+      <div class="card-body">
+        <h5 class="card-title">{{ product.title }}</h5>
+        <h6 class="card-title">{{ product.category }}</h6>
+        <p class="card-text">{{ product.description }}</p>
+        <p class="card-text">${{ product.price }}</p>
+        <p class="card-text">rating {{product.rating.rate}}</p>
+        <button class="btn btn-primary">View</button>
+        <button class="btn btn-success">Add to Cart</button>
       </div>
-   
-      
-    </ng-cantainer>
-
+      </div>
+    </div>
   </div>
+</div>
+</div>
