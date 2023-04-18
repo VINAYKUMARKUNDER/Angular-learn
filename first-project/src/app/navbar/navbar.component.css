@@ -1,0 +1,25 @@
+*{
+  margin: 0px;
+  padding: 0%;
+}
+
+.navbar{
+  background-color: rgba(0, 0, 0, 0.495);
+  margin: auto;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  gap: 60%;
+}
+
+
+.menu{
+  display: flex;
+  gap: 20%;
+ 
+}
+
+.menu > a{
+  color: red;
+  font-size: 18px;
+}

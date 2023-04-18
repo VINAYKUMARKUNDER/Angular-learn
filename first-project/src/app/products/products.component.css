@@ -1,0 +1,5 @@
+.product{
+  display: grid;
+  grid-template-rows: 25% 25% ;
+  background-color: red;
+}

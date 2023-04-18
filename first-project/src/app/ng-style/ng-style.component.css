@@ -1,0 +1,27 @@
+
+#main{
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 15px;
+  width: 90%;
+  margin: auto;
+
+
+}
+
+
+.product{
+  width: 100%;
+  height: auto;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 5px;
+  padding: 5px;
+
+}
+
+.product-cantainer > img{
+  width: 300px;
+  height: 400px;
+  border-radius: 8px;
+
+}

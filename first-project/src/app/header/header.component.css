@@ -1,0 +1,19 @@
+.header{
+  display: flex;
+  width: 85%;
+  margin: auto;
+  padding-top: 20px;
+  gap: 10%;
+
+}
+
+.img > img{
+  border-radius: 8px;
+}
+
+.text > p{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 24px;
+  text-decoration: dotted;
+
+}

@@ -1,0 +1,21 @@
+<div class="filter-container">
+
+  <span>Filter: </span>
+
+  <input type="radio" value="All" name="filter" [(ngModel)]="selectedRadioButton" (change)=" onSelectedRadioButton()"/>
+  <span>All Product<strong>({{all}})</strong></span>
+
+  <input type="radio" value="electronics" name="filter" [(ngModel)]="selectedRadioButton" (change)=" onSelectedRadioButton()"/>
+  <span>Electronics<strong>({{electronics}})</strong></span>
+
+  <input type="radio" value="jewelery" name="filter" [(ngModel)]="selectedRadioButton" (change)=" onSelectedRadioButton()"/>
+  <span>Jewelery<strong>({{jewelery}})</strong></span>
+
+  <input type="radio" value="men's clothing" name="filter" [(ngModel)]="selectedRadioButton" (change)=" onSelectedRadioButton()"/>
+  <span>Men's clothing<strong>({{mens_clothing}})</strong></span>
+
+  <input type="radio" value="women's clothing" name="filter" [(ngModel)]="selectedRadioButton" (change)=" onSelectedRadioButton()"/>
+  <span>Women's clothing<strong>({{womens_clothing}})</strong></span>
+
+
+</div>

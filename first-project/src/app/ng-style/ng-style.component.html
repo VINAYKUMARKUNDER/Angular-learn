@@ -1,0 +1,12 @@
+<div id="main">
+  <div *ngFor="let product of products" class="product">
+    <div class="product-cantainer" [ngStyle]="{backgroundColor: product.category==='jewelery' ? 'pink' : 'gray'}">
+      <h5>Product Id: {{ product.id }}</h5>
+      <img src="{{ product.image }}" alt="" />
+      <h5>category: {{ product.category }}</h5>
+      <h2>Title : {{ product.title }}</h2>
+      <h3>Price : {{ product.price }}</h3>
+      <p><strong>Discription: </strong>{{ product.description }}</p>
+    </div>
+  </div>
+</div>
