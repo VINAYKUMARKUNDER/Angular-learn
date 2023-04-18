@@ -13,6 +13,7 @@ import { CartComponent } from './cart/cart.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { SearchComponent } from './search/search.component';
 import { FilterComponent } from './filter/filter.component';
+import { ContectComponent } from './contect/contect.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FilterComponent } from './filter/filter.component';
     CartComponent,
     HomePageComponent,
     SearchComponent,
-    FilterComponent
+    FilterComponent,
+    ContectComponent
   ],
   imports: [
     BrowserModule,

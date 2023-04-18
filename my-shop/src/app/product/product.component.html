@@ -11,7 +11,10 @@
 <div id="main"> 
   <div *ngFor="let product of products" class="product">
     <div class="card" *ngIf="selectedRadioValue==='All' || selectedRadioValue ===  product.category">
-     <div *ngIf="searchText==='' || product.title.toLocaleLowerCase().includes(searchText)">
+     <div *ngIf="searchText==='' || product.title.toLocaleLowerCase().includes(searchText.toLocaleLowerCase())
+        || product.category.toLocaleLowerCase().includes(searchText.toLocaleLowerCase())
+        || product.description.toLocaleLowerCase().includes(searchText.toLocaleLowerCase())"
+     >
       <img class="img" src="{{ product.image }}" alt="Product Image" />
       <div class="card-body">
         <h5 class="card-title">{{ product.title }}</h5>
