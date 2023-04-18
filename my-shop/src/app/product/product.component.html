@@ -1,5 +1,5 @@
 
-<div>
+<main>
 
 <app-search (searchTextEmitter)="onSearchText($event )"/>
 
@@ -7,6 +7,11 @@
     [jewelery]="  getTotalWomensJewelery()" [mens_clothing]="getTotalMensProduct()"
     [womens_clothing]=" getTotalWomensProduct()" (selectedAccordingRadioButton)="getFilterAccordingRadioButton($event)"
     />
+
+
+</main>
+
+
 
 <div id="main"> 
   <div *ngFor="let product of products" class="product">
@@ -29,4 +34,4 @@
     </div>
   </div>
 </div>
-</div>
+

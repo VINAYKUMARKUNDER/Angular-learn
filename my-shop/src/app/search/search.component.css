@@ -1,0 +1,12 @@
+.search{
+  text-align: center;
+}
+
+.search > spen {
+  font-size: 20px;
+  font-weight: 900;
+}
+.search > input{
+  width: 30%;
+  border-radius: 8px;
+}
