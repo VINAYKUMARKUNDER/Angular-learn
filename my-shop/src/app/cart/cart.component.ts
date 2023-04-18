@@ -10,7 +10,7 @@ export class CartComponent implements OnInit{
 
   constructor(private cartService: CartServiceService){}
 
-  public product : any= [];
+  public products : any= [];
 
   public grandTotal : number = 0;
 
@@ -19,8 +19,8 @@ export class CartComponent implements OnInit{
 
     this.cartService.getProduct()
     .subscribe(res=>{
-
-      this.product=res;
+        console.log(res)
+      this.products=res;
       this.grandTotal = this.cartService.getTotalPrice();
     })
 
