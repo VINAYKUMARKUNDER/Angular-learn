@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-search',
@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent {
+
+  searchValue:string = '';
+
+  @Output() searchTextEmitter: EventEmitter<string> = new EventEmitter<string>();
+
+  onSrarchTextChanges(){
+    this.searchTextEmitter.emit(this.searchValue);
+  }
 
 }
