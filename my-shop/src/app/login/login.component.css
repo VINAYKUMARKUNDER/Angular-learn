@@ -38,7 +38,7 @@ input {
   background-color: #f1f1f1;
 }
 
-button {
+button >a {
   display: block;
   width: 100%;
   padding: 10px;
@@ -46,10 +46,26 @@ button {
   border-radius: 5px;
   background-color: #4CAF50;
   color: #fff;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
+  text-decoration: none;
+}
+
+button  {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  text-decoration: none;
 }
 
 button:hover {
@@ -61,3 +77,6 @@ button:hover {
     grid-template-columns: 1fr;
   }
 }
+
+
+

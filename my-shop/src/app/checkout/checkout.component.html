@@ -1,1 +1,55 @@
-<p>checkout works!</p>
+<div class="container my-5 main">
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Billing Address</h3>
+      <form>
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" class="form-control" id="name" name="name" [(ngModel)]="name" required>
+        </div>
+        <div class="form-group">
+          <label for="address">Address:</label>
+          <textarea class="form-control" id="address" name="address" rows="3" [(ngModel)]="address" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="city">City:</label>
+          <input type="text" class="form-control" id="city" [(ngModel)]="city" name="city" required>
+        </div>
+        <div class="form-group">
+          <label for="state">State:</label>
+          <input type="text" class="form-control" id="state" name="state" required>
+        </div>
+        <div class="form-group">
+          <label for="zip">Zip Code:</label>
+          <input type="text" class="form-control" id="zip" name="zip" required>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <h3>Payment Details</h3>
+      <form>
+        <div class="form-group">
+          <label for="cardholder">Cardholder Name:</label>
+          <input type="text" class="form-control" id="cardholder" name="cardholder" required>
+        </div>
+        <div class="form-group">
+          <label for="cardnumber">Card Number:</label>
+          <input type="text" class="form-control" id="cardnumber" name="cardnumber" required>
+        </div>
+        <div class="form-group">
+          <label for="expiry">Expiry Date:</label>
+          <input type="text" class="form-control" id="expiry" name="expiry" placeholder="MM / YY" required>
+        </div>
+        <div class="form-group">
+          <label for="cvv">CVV:</label>
+          <input type="text" class="form-control" id="cvv" name="cvv" required>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-md-12 text-right">
+      <button class="btn btn-primary" (click)="  conform()">Place Order</button>
+    </div>
+  </div>
+</div>

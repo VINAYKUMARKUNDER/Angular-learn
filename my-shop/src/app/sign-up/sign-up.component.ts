@@ -1,11 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
-export class SignUpComponent {
+export class SignUpComponent implements OnInit{
+
+  userData:any = [];
+
+  ngOnInit(): void {
+     this.userData= JSON.parse(localStorage.getItem('user')|| "");
+  }
 
   email:string ='';
   name:string ='';
@@ -14,7 +20,13 @@ export class SignUpComponent {
   bio:string ='';
   address:string ='';
 
-  user:any={
+
+
+
+
+
+  saveUserInfo(){
+  let  user={
     email: this.email,
     name:this.name,
     mobile: this.mobile,
@@ -22,14 +34,12 @@ export class SignUpComponent {
     bio:this.bio,
     address:this.address
   }
+  this.userData.push(user);
+    console.log(this.userData)
 
-  userData:any = [];
-
-
-  saveUserInfo(){
-    console.log(this.user)
-    localStorage.setItem("user", JSON.stringify(this.user));
+    localStorage.setItem("user", JSON.stringify(this.userData));
     alert("user data save successfully!!")
+    location.href=('/login')
 
   }
 

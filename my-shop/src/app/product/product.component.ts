@@ -1,14 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CartServiceService } from '../cart/cart-service.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
-export class ProductComponent {
+export class ProductComponent implements OnInit{
 
-  constructor(private cartService : CartServiceService){}
+  ngOnInit(): void {
+      this.status=JSON.parse(localStorage.getItem('login')|| "")
+  }
+
+  constructor(private cartService: CartServiceService) { }
 
   products = [
     {
@@ -95,29 +100,38 @@ export class ProductComponent {
 
 
   selectedRadioValue: string = 'All';
-  searchText:string ='';
+  searchText: string = '';
 
-  getFilterAccordingRadioButton(data:string){
-    this.selectedRadioValue=data;
+  getFilterAccordingRadioButton(data: string) {
+    this.selectedRadioValue = data;
     // console.log(this.selectedRadioValue)
   }
 
 
-  onSearchText(searchValue:string){
-      this.searchText=searchValue;
-      // console.log(this.searchText)
+  onSearchText(searchValue: string) {
+    this.searchText = searchValue;
+    // console.log(this.searchText)
+  }
+
+  status:Boolean = false;
+
+  addToCart(product: any) {
+
+
+    if (this.status) {
+      let res = this.cartService.addToCart(product);
+      if (res) alert("product addedd successfully!!")
+      else alert("this product is already addedd!!");
+    }else{
+      alert("Login First")
+      location.href = "/login"
+      
+    }
+
   }
 
 
-  addToCart(product:any){
-   let res= this.cartService.addToCart(product);
-   if(res) alert("product addedd successfully!!")
-   else alert("this product is already addedd!!");
-
-  }
-
-
-  view(product:object){
+  view(product: object) {
     localStorage.setItem("view", JSON.stringify(product));
   }
 

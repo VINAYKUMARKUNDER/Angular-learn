@@ -43,7 +43,7 @@
               <td colspan="4"></td>
               <td><button class="btn btn-danger" (click)="removeAll()">Empty Cart</button></td>
               <td><button routerLink="/products" class="btn btn-primary">Shop More</button></td>
-              <td><button class="btn btn-success">Checkout</button></td>
+              <td><button class="btn btn-success" routerLink="/checkout">Checkout</button></td>
 
               <td (click)="getTotal()"><h4>Total : ${{(getTotal()).toFixed(2)}}</h4></td>
             </tr>
