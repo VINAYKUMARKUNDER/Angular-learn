@@ -11,6 +11,7 @@ export class CartComponent implements OnInit{
   constructor(private cartService: CartServiceService){}
 
   public products : any= [];
+  status:Boolean=false;
 
   public grandTotal : number = 0;
 
@@ -34,6 +35,32 @@ export class CartComponent implements OnInit{
 
   removeAll(){
     this.cartService.removeAll();
+  }
+
+  total:number=0;
+   getTotal(){
+    // this.total =this.cartService.getTotalPrice();
+    let totl=0;
+
+    for(let i=0;i<this.products.length;i++){
+      totl+=this.products[i].total;
+    }
+    this.total=totl;
+    return totl;
+  }
+
+
+  decriment(item:any){
+    for(let i=0;i<this.products.length;i++){
+      if(this.products[i].id==item.id && this.products[i].quintity>1){
+        let val = this.products[i];
+        val.quintity--;
+        val.total -= val.price;
+      this.products[i]=(val);
+      }
+    }
+
+    this.status =true;
   }
 
 }

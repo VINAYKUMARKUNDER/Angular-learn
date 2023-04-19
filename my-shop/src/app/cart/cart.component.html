@@ -17,16 +17,23 @@
           </thead>
 
           <tbody>
-            <tr *ngFor="let item of products; let i=index">
+            
+            <tr *ngFor="let item of products; let i=index"  >
               <td>{{i+1}}</td>
               <td>{{item.name}}</td>
               <td><img src="{{item.image}}" alt="">  </td>
               <td>{{item.description}}</td>
               <td style="width:12%">{{item.price}}</td>
-              <td style="width:12%">{{item.quintity}}</td>
+              <td style="width:12%">
+                <button class="btn btn-primary" (click)="decriment(item)">-</button>
+
+                {{item.quintity}}
+                <button class="btn btn-primary">+</button>
+
+              </td>
               <td>{{item.total}}</td>
 
-              <td>
+              <td style="width:14%">
                 <button (click)="removeItem(item)" class="btn btn-danger">Delete</button>
               </td>
             </tr>
@@ -37,6 +44,8 @@
               <td><button class="btn btn-danger" (click)="removeAll()">Empty Cart</button></td>
               <td><button routerLink="/products" class="btn btn-primary">Shop More</button></td>
               <td><button class="btn btn-success">Checkout</button></td>
+
+              <td (click)="getTotal()"><h4>Total : {{getTotal()}}</h4></td>
             </tr>
 
           </tbody>

@@ -111,6 +111,7 @@ export class ProductComponent {
 
   addToCart(product:any){
     this.cartService.addToCart(product);
+    alert("product addedd successfully!!")
 
   }
 
