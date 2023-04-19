@@ -5,6 +5,8 @@ import { LoginComponent } from './login/login.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ContectComponent } from './contect/contect.component';
 import { CartComponent } from './cart/cart.component';
+import { ViewComponent } from './view/view.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
   {
@@ -29,6 +31,14 @@ const routes: Routes = [
   {
     component:HomePageComponent,
     path:''
+  },
+  {
+    component:ViewComponent,
+    path:'view'
+  },
+  {
+    component:SignUpComponent,
+    path:'signup'
   }
 ];
 

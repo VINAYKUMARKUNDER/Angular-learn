@@ -18,6 +18,7 @@ main {
   /* object-fit: cover; */
   text-align: center;
   border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
 }
 
 .rating {
@@ -43,5 +44,10 @@ main {
 .alert {
   background-color: yellow;
 }
+
+img:hover {
+  transform: scale(1.1);
+}
+
 
 

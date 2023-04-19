@@ -1,0 +1,27 @@
+.main{
+  margin-top: 100px;
+  margin-bottom: 40px;
+}
+
+.desc{
+  font-size: 20px;
+  font-weight: 700;
+}
+
+button{
+  margin: 20px;
+}
+
+img{
+  width: 400px;
+  height: 500px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+
+img:hover {
+  transform: scale(1.1);
+}
+

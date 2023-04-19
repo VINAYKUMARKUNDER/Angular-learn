@@ -116,4 +116,9 @@ export class ProductComponent {
 
   }
 
+
+  view(product:object){
+    localStorage.setItem("view", JSON.stringify(product));
+  }
+
 }

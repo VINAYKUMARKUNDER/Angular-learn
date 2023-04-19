@@ -14,6 +14,9 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { SearchComponent } from './search/search.component';
 import { FilterComponent } from './filter/filter.component';
 import { ContectComponent } from './contect/contect.component';
+import { ViewComponent } from './view/view.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 @NgModule({
@@ -28,7 +31,10 @@ import { ContectComponent } from './contect/contect.component';
     HomePageComponent,
     SearchComponent,
     FilterComponent,
-    ContectComponent
+    ContectComponent,
+    ViewComponent,
+    CheckoutComponent,
+    SignUpComponent
 
 
   ],
