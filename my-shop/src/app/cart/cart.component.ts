@@ -20,10 +20,15 @@ export class CartComponent implements OnInit{
 
     this.cartService.getProduct()
     .subscribe(res=>{
-        console.log(res)
-      this.products=res;
+
+
       this.grandTotal = this.cartService.getTotalPrice();
-    })
+    });
+
+
+    this.products= JSON.parse(localStorage.getItem("products") || "")
+
+    // console.log(this.products)
 
 
   }
@@ -50,17 +55,40 @@ export class CartComponent implements OnInit{
   }
 
 
-  decriment(item:any){
-    for(let i=0;i<this.products.length;i++){
-      if(this.products[i].id==item.id && this.products[i].quintity>1){
-        let val = this.products[i];
-        val.quintity--;
-        val.total -= val.price;
-      this.products[i]=(val);
-      }
-    }
+  decriment(product:any){
+    this.products= JSON.parse(localStorage.getItem("products") || "")
+    this.products.map((a: any, index: number) => {
 
-    this.status =true;
+      if (product.id === a.id) {
+        if(product.quintity<=1) this.cartService.removeCartItem(product);
+        else{
+        this.products[index].quintity--;
+        this.products[index].total-=this.products[index].price;
+        localStorage.setItem("products", JSON.stringify(this.products));
+        window.location.reload();
+        }
+
+      }
+    })
+  }
+
+
+  incriment(product:any){
+    this.products= JSON.parse(localStorage.getItem("products") || "")
+    this.products.map((a: any, index: number) => {
+
+      if (product.id === a.id) {
+        if(a.quintity<=1)this.cartService.removeCartItem(product);
+
+        this.products[index].quintity++;
+        this.products[index].total+=this.products[index].price;
+        localStorage.setItem("products", JSON.stringify(this.products));
+        window.location.reload();
+
+      }
+    })
   }
 
 }
+
+

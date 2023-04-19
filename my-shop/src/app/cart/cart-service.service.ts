@@ -22,6 +22,7 @@ export class CartServiceService {
 
 
   addToCart(product: any) {
+   if(this.cartItem.length>0) this.cartItem= JSON.parse(localStorage.getItem("products") || "") ||[];
     let pro: any = {
       id: product.id,
       name: product.title,
@@ -34,17 +35,18 @@ export class CartServiceService {
 
     let val = this.checkProduct(pro);
     if (val.status) {
-      pro.quintity++;
-      pro.total += pro.price;
-      this.cartItem[val.index]=(pro);
+      return false;
     }
     else  {
       this.cartItem.push(pro);
+
+    // this.productList.next(this.cartItem);
+    this.getTotalPrice();
+    localStorage.setItem("products", JSON.stringify(this.cartItem));
+      return true;
     }
 
 
-    this.productList.next(this.cartItem);
-    this.getTotalPrice();
     // console.log(this.cartItem);
   }
 
@@ -79,16 +81,24 @@ export class CartServiceService {
   }
 
   removeCartItem(product: any) {
-    this.cartItem.map((a: any, index: any) => {
+    this.cartItem= JSON.parse(localStorage.getItem("products") || "")
+    this.cartItem.map((a: any, index: number) => {
+      console.log(product)
       if (product.id === a.id) {
         this.cartItem.splice(index, 1);
+        localStorage.setItem("products", JSON.stringify(this.cartItem));
+        window.location.reload();
+
       }
     })
+
   }
 
 
   removeAll() {
     this.cartItem = [];
     this.productList.next(this.cartItem);
+    localStorage.removeItem("products")
+    window.location.reload();
   }
 }

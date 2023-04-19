@@ -110,8 +110,9 @@ export class ProductComponent {
 
 
   addToCart(product:any){
-    this.cartService.addToCart(product);
-    alert("product addedd successfully!!")
+   let res= this.cartService.addToCart(product);
+   if(res) alert("product addedd successfully!!")
+   else alert("this product is already addedd!!");
 
   }
 
