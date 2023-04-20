@@ -29,6 +29,7 @@
         <p class="card-text">rating {{product.rating.rate}}</p>
         <button class="btn btn-primary" routerLink="/view" (click)="view(product)">View</button>
         <button class=" btn btn1 btn-success " (click)=addToCart(product) >Add to Cart</button>
+        <button class="btn wishlist"> <img src="{{wishListStatus(product)}}" alt="" class="wistlist-img" (click)="addWishList(product)"> </button>
       </div>
       </div>
     </div>
