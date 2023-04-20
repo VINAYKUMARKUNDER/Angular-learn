@@ -51,6 +51,7 @@ export class CartComponent implements OnInit{
       totl+=this.products[i].total;
     }
     this.total=totl;
+    localStorage.setItem('total',JSON.stringify(totl*80));
     return totl;
   }
 

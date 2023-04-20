@@ -30,21 +30,31 @@
       <form>
         <div class="form-group">
           <label for="cardholder">Cardholder Name:</label>
-          <input type="text" class="form-control" id="cardholder" name="cardholder" required>
+          <input type="text" class="form-control" id="cardholder" [(ngModel)]="cardHolder" name="cardholder" required>
         </div>
         <div class="form-group">
           <label for="cardnumber">Card Number:</label>
-          <input type="text" class="form-control" id="cardnumber" name="cardnumber" required>
+          <input type="text" class="form-control" id="cardnumber" [(ngModel)]="cardNumber" name="cardnumber" required>
         </div>
         <div class="form-group">
           <label for="expiry">Expiry Date:</label>
-          <input type="text" class="form-control" id="expiry" name="expiry" placeholder="MM / YY" required>
+          <input type="text" class="form-control" id="expiry" [(ngModel)]="expiry" name="expiry" placeholder="MM / YY" required>
         </div>
         <div class="form-group">
           <label for="cvv">CVV:</label>
-          <input type="text" class="form-control" id="cvv" name="cvv" required>
+          <input type="text" class="form-control" id="cvv" [(ngModel)]="cvv" name="cvv" required>
         </div>
+
+
+
       </form>
+
+      <div class="form-group">
+        <label for="cvv">Total In Rupee:</label>
+        <div> <strong>Main bal: </strong> {{total}} + <strong>GST 18%</strong> {{(gst).toFixed(2)}} = <strong>Total: {{(netTotal).toFixed(2)}} </strong> </div>
+      </div>
+
+      <button class="btn btn1 btn-primary" (click)="payNow()">{{(netTotal).toFixed(2)}} Pay Now</button>
     </div>
   </div>
   <div class="row mt-3">

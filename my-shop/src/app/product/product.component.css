@@ -37,7 +37,7 @@ main {
 }
 
 .btn1{
-  margin-left: 55px;
+  margin-left: 35px;
 }
 
 
@@ -55,6 +55,13 @@ img:hover {
 
 .wistlist-img{
   width: 30px;
+}
+
+.wrap{
+  white-space: nowrap;
+  overflow: hidden;
+   text-overflow: ellipsis;
+   max-width: 22ch;
 }
 
 

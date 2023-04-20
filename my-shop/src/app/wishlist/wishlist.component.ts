@@ -25,4 +25,8 @@ export class WishlistComponent implements OnInit{
 
   }
 
+  public removeOne(product:any){
+      this.wishlistService.removeOneWishlistItem(product);
+  }
+
 }

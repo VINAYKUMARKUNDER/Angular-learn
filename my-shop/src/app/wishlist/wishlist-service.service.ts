@@ -71,11 +71,12 @@ export class WishlistServiceService implements OnInit {
 
 
   public removeOneWishlistItem(product: any) {
+    this.wishlistProduct = JSON.parse(localStorage.getItem('wishList') || "");
     this.wishlistProduct.map((a: any, index: number) => {
       console.log(product)
       if (product.id === a.id) {
         this.wishlistProduct.splice(index, 1);
-        localStorage.setItem("products", JSON.stringify(this.wishlistProduct));
+        localStorage.setItem("wishList", JSON.stringify(this.wishlistProduct));
         window.location.reload();
 
       }

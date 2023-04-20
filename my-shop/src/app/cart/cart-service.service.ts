@@ -87,7 +87,7 @@ export class CartServiceService implements OnInit{
   removeCartItem(product: any) {
     this.cartItem= JSON.parse(localStorage.getItem("products") || "")
     this.cartItem.map((a: any, index: number) => {
-      console.log(product)
+      // console.log(product)
       if (product.id === a.id) {
         this.cartItem.splice(index, 1);
         localStorage.setItem("products", JSON.stringify(this.cartItem));

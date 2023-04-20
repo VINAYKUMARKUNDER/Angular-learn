@@ -10,7 +10,7 @@
               <th>Product Image</th>
               <th>Description</th>
               <th>price</th>
-              <th align="left">Action</th>
+              <th >Action</th>
             </tr>
           </thead>
 
@@ -21,13 +21,10 @@
               <td>{{item.title}}</td>
               <td><img src="{{item.image}}" alt="">  </td>
               <td>{{item.description}}</td>
-              <td style="width:12%">{{(item.price).toFixed(2)}}</td>
-              <td style="width:12%">
-                {{item.quintity}}
-              </td>
+              <td class="col-size">{{(item.price).toFixed(2)}}</td>
 
-              <td style="width:14%">
-                <button  class="btn btn-danger">Remove</button>
+              <td class="col-size">
+                <button  class="btn btn-danger " (click)="removeOne(item)">Remove</button>
               </td>
             </tr>
 

@@ -22,9 +22,9 @@
      >
       <img class="img" src="{{ product.image }}" alt="Product Image" />
       <div class="card-body">
-        <h5 class="card-title" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 22ch;">{{ product.title }}</h5>
+        <h5 class="card-title wrap">{{ product.title }}</h5>
         <h6 class="card-title">{{ product.category }}</h6>
-        <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 31ch;">{{ product.description }}</p>
+        <p class="card-text wrap" >{{ product.description }}</p>
         <p class="card-text">${{ product.price }}</p>
         <p class="card-text">rating {{product.rating.rate}}</p>
         <button class="btn btn-primary" routerLink="/view" (click)="view(product)">View</button>
