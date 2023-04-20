@@ -17,6 +17,7 @@ import { ContectComponent } from './contect/contect.component';
 import { ViewComponent } from './view/view.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     ContectComponent,
     ViewComponent,
     CheckoutComponent,
-    SignUpComponent
+    SignUpComponent,
+    WishlistComponent
 
 
   ],

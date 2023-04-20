@@ -1,10 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CartServiceService {
+export class CartServiceService implements OnInit{
+
+  ngOnInit(): void {
+        this.cartItem= JSON.parse(localStorage.getItem("products") || "");
+  }
 
   constructor() { }
 
@@ -22,7 +26,7 @@ export class CartServiceService {
 
 
   addToCart(product: any) {
-   if(this.cartItem.length>0) this.cartItem= JSON.parse(localStorage.getItem("products") || "") ||[];
+
     let pro: any = {
       id: product.id,
       name: product.title,

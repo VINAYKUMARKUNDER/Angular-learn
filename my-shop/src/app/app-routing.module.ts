@@ -8,6 +8,7 @@ import { CartComponent } from './cart/cart.component';
 import { ViewComponent } from './view/view.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 const routes: Routes = [
   {
@@ -44,6 +45,10 @@ const routes: Routes = [
   {
     component:CheckoutComponent,
     path:'checkout'
+  },
+  {
+    component:WishlistComponent,
+    path:'wishlist'
   }
 ];
 

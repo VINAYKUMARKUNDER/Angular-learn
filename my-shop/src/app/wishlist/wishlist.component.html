@@ -1,0 +1,76 @@
+<!-- <ng-container *ngIf="products.length !== 0"> -->
+  <div class="container  main">
+    <div class="card-table">
+      <div class="card-product">
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th>Sr. no</th>
+              <th>Product Name</th>
+              <th>Product Image</th>
+              <th>Description</th>
+              <th>price</th>
+              <th>Quintity</th>
+              <th>Total</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr *ngFor="let item of products; let i=index"  >
+              <td>{{i+1}}</td>
+              <td>{{item.name}}</td>
+              <td><img src="{{item.image}}" alt="">  </td>
+              <td>{{item.description}}</td>
+              <td style="width:12%">{{(item.price).toFixed(2)}}</td>
+              <td style="width:12%">
+                <button class="btn btn-primary" >-</button>
+
+                {{item.quintity}}
+                <button class="btn btn-primary">+</button>
+
+              </td>
+              <td>{{(item.total).toFixed(2)}}</td>
+
+              <td style="width:14%">
+                <button  class="btn btn-danger">Delete</button>
+              </td>
+            </tr>
+
+
+            <tr>
+              <td colspan="4"></td>
+              <td><button class="btn btn-danger" >Empty Cart</button></td>
+              <td><button routerLink="/products" class="btn btn-primary">Shop More</button></td>
+              <td><button class="btn btn-success" routerLink="/checkout">Checkout</button></td>
+
+              <!-- <td (click)="getTotal()"><h4>Total : ${{(getTotal()).toFixed(2)}}</h4></td> -->
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<!-- </ng-container> -->
+
+<ng-container *ngIf="products.length === 0">
+  <div class="container main">
+    <div class="card">
+      <h5 class="card-title">My Cart</h5>
+    </div>
+
+    <div class="center">
+      <img
+        src="https://thumbs.dreamstime.com/b/wishlist-hand-drawn-vector-lettering-isolated-white-background-motivation-phrase-design-poster-greeting-card-photo-album-145269082.jpg"
+        alt=""
+      />
+      <h4>Your wishlist is empty</h4>
+      <h6>Add item at it now.</h6>
+
+      <button class="btn btn-primary" routerLink="/products">Shop Now</button>
+    </div>
+  </div>
+</ng-container>
+
