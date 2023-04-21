@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit{
 
     if(JSON.parse(localStorage.getItem('login')||"")===false){
 
-      alert("User id or Password Invalid!!")
+      // alert("User id or Password Invalid!!")
       this.status=false;
       location.href=('/signup')
     }

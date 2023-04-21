@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartServiceService } from '../cart/cart-service.service';
+import { WishlistServiceService } from '../wishlist/wishlist-service.service';
 
 @Component({
   selector: 'app-view',
