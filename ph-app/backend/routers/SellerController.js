@@ -1,4 +1,5 @@
 const express = require('express');
+const { body, validationResult } = require('express-validator');
 const router = express.Router();
 const db = require('../database')
 
@@ -31,12 +32,16 @@ router.get('/:id', async (req, res) => {
 });
 
 // POST a new seller
-router.post('/', async (req, res) => {
+router.post('/',[
+  body('name').not().isEmpty().withMessage('Name is required'),
+  body('email').isEmail().withMessage('Email is not valid'),
+], async (req, res) => {
+  const errors = validationResult(req);
   try {
     const seller =await new Seller.create(req.body);
     res.status(201).json(seller);
   } catch (error) {
-    return res.status(500).json({ errors: error });
+    return res.status(500).json({ errors: errors.array() });
   }
 });
 

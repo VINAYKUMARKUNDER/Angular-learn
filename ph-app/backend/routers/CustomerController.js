@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
 // Get customer by id
 router.get('/:id', async (req, res) => {
   try {
-    const customer = await Customer.findByPk(req.params.id);
+    const customer = await findById(req.params.id);
     if (!customer) {
       return res.status(404).json({ msg: 'Customer not found' });
     }
@@ -54,7 +54,7 @@ router.post('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const { name, email, phone, address } = req.body;
-    let customer = await Customer.findByPk(req.params.id);
+    let customer = await findById(req.params.id);
     if (!customer) {
       return res.status(404).json({ msg: 'Customer not found' });
     }
@@ -73,7 +73,7 @@ router.get('/:id', async (req, res) => {
 // Delete customer
 router.get('/:id', async (req, res) => {
   try {
-    let customer = await Customer.findByPk(req.params.id);
+    let customer = await findById(req.params.id);
     if (!customer) {
       return res.status(404).json({ msg: 'Customer not found' });
     }
@@ -84,6 +84,13 @@ router.get('/:id', async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
+
+let findById =(id)=>{
+    db.query(`Select * from customers where id = ${id}`, (err, resp)=>{
+        if(err)return err;
+        else return resp;
+    })
+}
 
 
 module.exports=router;
