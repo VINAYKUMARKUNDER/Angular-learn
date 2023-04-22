@@ -9,9 +9,9 @@ const db = require('../database')
 // Get all medicines
 router.get('/', async (req, res) => {
     try {
-      // const medicine = await Medicine.findAll();
-      const medicine = await db.query('select * from medicine',(err, resq)=>{
-        res.json(resq);
+      const medicine = await Medicine.findAll();
+      // const medicine = await db.query('select * from medicine',(err, resq)=>{
+        res.json(res);
       })
     
     } catch (error) {

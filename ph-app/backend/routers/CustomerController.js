@@ -39,6 +39,9 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+
+
+
 // Create new customer
 router.post('/', async (req, res) => {
   try {
@@ -50,6 +53,9 @@ router.post('/', async (req, res) => {
     res.status(500).json('Server Error');
   }
 });
+
+
+
 
 // Update customer
 router.get('/:id', async (req, res) => {
@@ -71,6 +77,9 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+
+
+
 // Delete customer
 router.get('/:id', async (req, res) => {
   try {
@@ -85,6 +94,10 @@ router.get('/:id', async (req, res) => {
     res.status(500).json('Server Error');
   }
 });
+
+
+
+
 
 let findById = async (id)=>{
     await db.query(`Select * from ph.customers where id = ${id}`, (err, resp)=>{

@@ -24,6 +24,14 @@ const Seller = db.define('Sellers', {
   address: {
     type: DataTypes.STRING,
     allowNull: false
+  },
+  about: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  gst: {
+    type: DataTypes.STRING,
+    allowNull: false
   }
 }, {
   tableName: 'sellers',
