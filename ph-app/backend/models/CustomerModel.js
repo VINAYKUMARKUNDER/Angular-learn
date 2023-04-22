@@ -1,7 +1,7 @@
 const DataTypes = require('sequelize');
 const db = require('../database');
 
-const Customer = db.define('customer', {
+const Customer = db.define('customers', {
   id: {
     type: DataTypes.BIGINT,
     autoIncrement: true,

@@ -9,9 +9,10 @@ const Seller = require('../models/SellerModel');
 router.get('/', async (req, res) => {
   try {
     const sellers = await Seller.findAll();
+
     res.json(sellers);
   } catch (error) {
-    res.status(500).send(error);
+    res.status(500).json(error);
   }
 });
 
@@ -19,12 +20,12 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
 
-    const seller= await  db.query(`select * from sellers where id = ${req.params.id}`)
-    // const seller = await Seller.findById(req.params.id);
-    if (JSON.stringify(seller) === '{}') {
+    // const seller= await  db.query(`select * from sellers where id = ${req.params.id}`)
+    const seller = await Seller.findByPk(req.params.id);
+    if (!seller) {
       return res.status(404).json(error="Seller is not found with seller id");
     }
-    else res.send(seller);
+    else res.json(seller);
   } catch (error) {
     console.log(error)
     res.status(500).json(error);
@@ -32,42 +33,47 @@ router.get('/:id', async (req, res) => {
 });
 
 // POST a new seller
-router.post('/',[
-  body('name').not().isEmpty().withMessage('Name is required'),
-  body('email').isEmail().withMessage('Email is not valid'),
-], async (req, res) => {
-  const errors = validationResult(req);
+router.post('/', async (req, res) => {
   try {
-    const seller =await new Seller.create(req.body);
+      // console.log(req.body)
+
+    const seller =await Seller.create(req.body);
+    console.log(seller)
     res.status(201).json(seller);
   } catch (error) {
-    return res.status(500).json({ errors: errors.array() });
+    return res.status(500).json({ errors:error});
   }
 });
 
 // PUT (update) a seller by ID
 router.put('/:id', async (req, res) => {
   try {
-    const seller = await Seller.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    // console.log(req.body)
+    const seller = await Seller.update( req.body);
+    console.log(seller)
     if (!seller) {
-      return res.status(404).send('Seller not found');
+      return res.status(404).json('Seller not found');
     }
-    res.send(seller);
+    res.json(seller);
   } catch (error) {
-    res.status(500).send(error);
+    res.status(500).json(error);
   }
 });
 
 // DELETE a seller by ID
 router.delete('/:id', async (req, res) => {
   try {
-    const seller = await Seller.findByIdAndDelete(req.params.id);
-    if (!seller) {
-      return res.status(404).send('Seller not found');
-    }
-    res.send(seller);
+
+   await db.query(`DELETE FROM sellers where id =${req.params.id}`,(err, resp)=>{
+      console.log(resp)
+    })
+  //   const seller = await Seller.delete(req.params.id)
+  //   if (!seller) {
+  //     return res.status(404).json('Seller not found');
+  //   }
+  //   res.json(seller);
   } catch (error) {
-    res.status(500).send(error);
+    res.status(500).json(error);
   }
 });
 

@@ -1,14 +1,19 @@
 
 const express = require('express');
 const router = express.Router();
-const { Medicine } = require('../models/MedicineModel');
+const Medicine  = require('../models/MedicineModel');
+
+const db = require('../database')
 
 
 // Get all medicines
 router.get('/', async (req, res) => {
     try {
-      const medicines = await Medicine.findAll();
-      res.json(medicines);
+      // const medicine = await Medicine.findAll();
+      const medicine = await db.query('select * from medicine',(err, resq)=>{
+        res.json(resq);
+      })
+    
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Server Error' });

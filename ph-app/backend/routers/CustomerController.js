@@ -8,33 +8,34 @@ const Customer = require('../models/CustomerModel');
 // Get all customers
 router.get('/', async (req, res) => {
   try {
-    // const customers = await Customer.findAll();
+    const customers = await Customer.findAll();
 
-    db.query('select * from customers', (err, result)=>{
-        if(err)res.json(err="Error")
-        else {
-            console.log(result)
-            res.status(200).json(result)
-        }
-    })
-    // res.status(200).json(customers);
+  //  await db.query('select * from customers', (err, result)=>{
+  //       if(err)res.json(err="Error")
+  //       else {
+  //           console.log(result)
+  //           res.status(200).json(result)
+  //       }
+  //   })
+    res.status(200).json(customers);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).json('Server Error');
   }
 });
 
 // Get customer by id
 router.get('/:id', async (req, res) => {
   try {
-    const customer = await findById(req.params.id);
+    const customer = await Customer.findById(req.params.id);
+    console.log(customer)
     if (!customer) {
       return res.status(404).json({ msg: 'Customer not found' });
     }
     res.status(200).json(customer);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).json('Server Error');
   }
 });
 
@@ -46,7 +47,7 @@ router.post('/', async (req, res) => {
     res.status(201).json(customer);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).json('Server Error');
   }
 });
 
@@ -66,7 +67,7 @@ router.get('/:id', async (req, res) => {
     res.status(200).json(customer);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).json('Server Error');
   }
 });
 
@@ -81,12 +82,13 @@ router.get('/:id', async (req, res) => {
     res.status(200).json({ msg: 'Customer deleted successfully' });
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).json('Server Error');
   }
 });
 
-let findById =(id)=>{
-    db.query(`Select * from customers where id = ${id}`, (err, resp)=>{
+let findById = async (id)=>{
+    await db.query(`Select * from ph.customers where id = ${id}`, (err, resp)=>{
+      console.log(err)
         if(err)return err;
         else return resp;
     })
