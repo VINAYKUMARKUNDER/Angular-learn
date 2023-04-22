@@ -7,15 +7,27 @@ const Invoice = db.define("Invoice", {
     primaryKey: true,
     autoIncrement: true,
   },
-  invoiceDate: {
+  invoice_date: {
     type: DataTypes.DATEONLY,
     allowNull: false,
   },
-  totalAmount: {
+  total_amount: {
     type: DataTypes.DOUBLE,
     allowNull: false,
   },
-});
+  customer_id:{
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  medicine_id:{
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  }
+}
+  , {
+    tableName: 'invoices',
+    timestamps: false
+  });
 
 
 const Customer = require("./CustomerModel");

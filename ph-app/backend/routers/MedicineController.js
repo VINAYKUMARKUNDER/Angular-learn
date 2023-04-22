@@ -33,6 +33,7 @@ router.get("/:id", async (req, res) => {
 
 // Create a new medicine
 router.post("/", async (req, res) => {
+  console.log(req.body)
   try {
     const medicine = await Medicine.create(req.body);
     res.status(201).json(medicine);

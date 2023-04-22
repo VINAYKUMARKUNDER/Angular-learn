@@ -9,32 +9,33 @@ const Customer = require("../models/CustomerModel");
 // Get all invoices
 router.get("/", async (req, res) => {
   try {
-    const invoices = await Invoice.findAll({
-      include: [
-        // { model: Medicine, attributes: ["name", "price"] },
-        { model: Customer, attributes: ["name", "email"] },
-      ],
-      attributes: ["id", "invoice_date", "total_amount"],
+    const invoices = await db.query(`SELECT Invoice.*, customer.*, medicine.*
+    FROM invoices AS Invoice LEFT OUTER JOIN medicine AS medicine ON 
+    Invoice.medicine_Id = medicine.id LEFT 
+    OUTER JOIN customers AS customer ON Invoice.customer_id = customer.id` ,(err, res)=>{
+      return res;
     });
-    res.json(invoices);
+
+    console.log(invoices)
+    return res.json(invoices[0]);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+   return  res.status(500).json({ message: err.message });
   }
 });
 
 // Get a specific invoice by id
 router.get("/:id", async (req, res) => {
   try {
-    const invoice = await findById(req.params.id, {
-      include: [
-        { model: Medicine, attributes: ["name", "price"] },
-        { model: Customer, attributes: ["name", "email"] },
-      ],
+    const invoice = await db.query(`SELECT Invoice.*, customer.*, medicine.*
+    FROM invoices AS Invoice LEFT OUTER JOIN medicine AS medicine ON 
+    Invoice.medicine_Id = medicine.id LEFT 
+    OUTER JOIN customers AS customer ON Invoice.customer_id = customer.id where Invoice.id= ${req.params.id}` ,(err, res)=>{
+      return res;
     });
-    if (!invoice) {
+    if (invoice[0].length==0) {
       return res.status(404).json({ message: "Invoice not found" });
     }
-    res.json(invoice);
+    return res.json(invoice[0]);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

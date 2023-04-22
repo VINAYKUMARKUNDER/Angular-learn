@@ -10,33 +10,45 @@ const Medicine = db.define(
       primaryKey: true,
       autoIncrement: true,
     },
-    productName: {
+    product_Name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    manufacturer: {
+    mfg_company: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    manufacturingDate: {
+    mfg_date: {
       type: DataTypes.DATEONLY,
       allowNull: false,
     },
-    expiryDate: {
+   unit: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    exp_date: {
       type: DataTypes.DATEONLY,
       allowNull: false,
+    },
+    type:{
+      type:DataTypes.STRING,
+      allowNull:false
     },
     price: {
       type: DataTypes.DOUBLE,
       allowNull: false,
     },
-    batchId: {
+    batch_id: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    totalLeafInOneBox: {
+    total_leaf_in_one_box: {
       type: DataTypes.INTEGER,
       allowNull: false,
+    },
+    number_of_item_in_one_leaf:{
+      type:DataTypes.INTEGER,
+      allowNull:false
     },
     about: {
       type: DataTypes.STRING,
