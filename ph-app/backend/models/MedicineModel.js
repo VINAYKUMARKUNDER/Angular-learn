@@ -10,15 +10,15 @@ const Medicine = db.define(
       primaryKey: true,
       autoIncrement: true,
     },
-    product_Name: {
+    productName: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    mfg_company: {
+    mfgcompany: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    mfg_date: {
+    mfgdate: {
       type: DataTypes.DATEONLY,
       allowNull: false,
     },
@@ -26,7 +26,7 @@ const Medicine = db.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    exp_date: {
+    expdate: {
       type: DataTypes.DATEONLY,
       allowNull: false,
     },
@@ -38,15 +38,15 @@ const Medicine = db.define(
       type: DataTypes.DOUBLE,
       allowNull: false,
     },
-    batch_id: {
+    batchid: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    total_leaf_in_one_box: {
+    totalLeafInOneBox: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    number_of_item_in_one_leaf:{
+    numberOfItemInOneLeaf:{
       type:DataTypes.INTEGER,
       allowNull:false
     },
@@ -61,6 +61,6 @@ const Medicine = db.define(
   }
 );
 
-Medicine.belongsTo(Seller, { foreignKey: "seller_id" });
+Medicine.belongsTo(Seller, { foreignKey: "sellerId" });
 
 module.exports = Medicine;

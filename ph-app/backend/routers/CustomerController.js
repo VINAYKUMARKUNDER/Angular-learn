@@ -44,7 +44,7 @@ router.post("/", async (req, res) => {
 });
 
 // Update customer
-router.get("/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     const customer = await Customer.update(
       {
@@ -69,13 +69,18 @@ router.get("/:id", async (req, res) => {
 });
 
 // Delete customer
-router.get("/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     let customer = await Customer.findByPk(req.params.id);
+    console.log(customer)
     if (!customer) {
       return res.status(404).json({ msg: "Customer not found..." });
     }
-    await customer.destroy();
+    await customer.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
     res.status(200).json({ msg: "Customer deleted successfully" });
   } catch (err) {
     console.error(err.message);

@@ -18,19 +18,25 @@ const Inventory = db.define("inventory", {
     type: DataTypes.FLOAT,
     allowNull: false,
   },
-  totalPrice: {
-    type: DataTypes.FLOAT,
+  medicineId: {
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
   dateAdded: {
     type: DataTypes.DATEONLY,
     allowNull: false,
   },
+},{
+
+  tableName: 'inventory',
+  timestamps: false
+
 });
 
 Inventory.belongsTo(Medicine, {
   foreignKey: { allowNull: false },
   onDelete: "CASCADE",
+  
 });
 
 module.exports = Inventory;

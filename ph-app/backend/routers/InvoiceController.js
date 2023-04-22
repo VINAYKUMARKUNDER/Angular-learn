@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const db = require('../database')
+const db = require("../database");
 
 const Invoice = require("../models/InvoiceModel");
 const Medicine = require("../models/MedicineModel");
@@ -9,33 +9,32 @@ const Customer = require("../models/CustomerModel");
 // Get all invoices
 router.get("/", async (req, res) => {
   try {
-    const invoices = await db.query(`SELECT Invoice.*, customer.*, medicine.*
-    FROM invoices AS Invoice LEFT OUTER JOIN medicine AS medicine ON 
-    Invoice.medicine_Id = medicine.id LEFT 
-    OUTER JOIN customers AS customer ON Invoice.customer_id = customer.id` ,(err, res)=>{
-      return res;
+    const invoices = await Invoice.findAll({
+      include: [
+        { model: Medicine, attributes: ["productName", "price"] },
+        { model: Customer, attributes: ["name", "email"] },
+      ],
+      attributes: ["id", "invoiceDate", "totalAmount"],
     });
-
-    console.log(invoices)
-    return res.json(invoices[0]);
+    res.json(invoices);
   } catch (err) {
-   return  res.status(500).json({ message: err.message });
+    res.status(500).json({ message: err.message });
   }
 });
 
 // Get a specific invoice by id
 router.get("/:id", async (req, res) => {
   try {
-    const invoice = await db.query(`SELECT Invoice.*, customer.*, medicine.*
-    FROM invoices AS Invoice LEFT OUTER JOIN medicine AS medicine ON 
-    Invoice.medicine_Id = medicine.id LEFT 
-    OUTER JOIN customers AS customer ON Invoice.customer_id = customer.id where Invoice.id= ${req.params.id}` ,(err, res)=>{
-      return res;
+    const invoice = await Invoice.findByPk(req.params.id, {
+      include: [
+        { model: Medicine, attributes: ["productName", "price"] },
+        { model: Customer, attributes: ["name", "email"] },
+      ],
     });
-    if (invoice[0].length==0) {
+    if (!invoice) {
       return res.status(404).json({ message: "Invoice not found" });
     }
-    return res.json(invoice[0]);
+    res.json(invoice);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -43,14 +42,9 @@ router.get("/:id", async (req, res) => {
 
 // Create a new invoice
 router.post("/", async (req, res) => {
+  console.log(req.body);
   try {
-    const { customer_id, medicine_id, invoice_date, total_amount } = req.body;
-    const invoice = await Invoice.create({
-      customer_id,
-      medicine_id,
-      invoice_date,
-      total_amount,
-    });
+    const invoice = await Invoice.create(req.body);
     res.status(201).json(invoice);
   } catch (err) {
     res.status(400).json({ message: err.message });
@@ -58,18 +52,18 @@ router.post("/", async (req, res) => {
 });
 
 // Update an existing invoice by id
-router.patch("/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
-    const { customer_id, medicine_id, invoice_date, total_amount } = req.body;
+    const { customerId, medicineId, invoiceDate, totalAmount } = req.body;
     const invoice = await findById(req.params.id);
     if (!invoice) {
       return res.status(404).json({ message: "Invoice not found" });
     }
     await invoice.update({
-      customer_id,
-      medicine_id,
-      invoice_date,
-      total_amount,
+      customerId,
+      medicineId,
+      invoiceDate,
+      totalAmount,
     });
     res.json(invoice);
   } catch (err) {
@@ -78,24 +72,17 @@ router.patch("/:id", async (req, res) => {
 });
 
 // Delete an existing invoice by id
-router.delete("/:id", async (req, res) => {
-  try {
-    const invoice = await Invoice.findById(req.params.id);
-    if (!invoice) {
-      return res.status(404).json({ message: "Invoice not found" });
-    }
-    await invoice.destroy();
-    res.json({ message: "Invoice deleted successfully" });
-  } catch (error) {
-    res.status(400).json({ message: err.message });
-  }
-});
+// router.delete("/:id", async (req, res) => {
+//   try {
+//     const invoice = await Invoice.findById(req.params.id);
+//     if (!invoice) {
+//       return res.status(404).json({ message: "Invoice not found" });
+//     }
+//     await invoice.destroy();
+//     res.json({ message: "Invoice deleted successfully" });
+//   } catch (error) {
+//     res.status(400).json({ message: err.message });
+//   }
+// });
 
-let findById =(id)=>{
-    db.query(`Select * from invoices where id= ${id}`, (err, result)=>{
-      if(err)return err;
-      else return result;
-    })
-}
-
-module.exports=router;
+module.exports = router;

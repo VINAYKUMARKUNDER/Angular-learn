@@ -39,7 +39,7 @@ router.post("/", async (req, res) => {
     res.status(201).json(medicine);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Server Error" });
+    res.status(500).json({ error });
   }
 });
 

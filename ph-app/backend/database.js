@@ -48,44 +48,44 @@ let genrateTable = () => {
       CREATE TABLE medicine (
         id BIGINT NOT NULL AUTO_INCREMENT,
         about VARCHAR(255),
-        batch_id VARCHAR(30) NOT NULL,
+        batchId VARCHAR(30) NOT NULL,
         type VARCHAR(30) NOT NULL,
-        exp_date DATE NOT NULL,
-        mfg_company VARCHAR(50) NOT NULL,
-        mfg_date DATE NOT NULL,
+        expDate DATE NOT NULL,
+        mfgCompany VARCHAR(50) NOT NULL,
+        mfgDate DATE NOT NULL,
         unit INTEGER NOT NULL,
         price FLOAT(53) NOT NULL,
-        product_name VARCHAR(255) NOT NULL,
-        total_leaf_in_one_box INTEGER NOT NULL,
-        number_of_item_in_one_leaf INTEGER NOT NULL,
-        seller_id BIGINT NOT NULL,
+        productName VARCHAR(255) NOT NULL,
+        totalLeafInOneBox INTEGER NOT NULL,
+        numberOfItemInOneLeaf INTEGER NOT NULL,
+        sellerId BIGINT NOT NULL,
         PRIMARY KEY (id),
-        FOREIGN KEY (seller_id) REFERENCES sellers(id)
+        FOREIGN KEY (sellerId) REFERENCES sellers(id)
       )`
     );
 
   conn.query(`
       CREATE TABLE invoices (
         id BIGINT NOT NULL AUTO_INCREMENT,
-        invoice_date DATE NOT NULL,
-        total_amount FLOAT(53) NOT NULL,
-        customer_id BIGINT NOT NULL,
-        medicine_id BIGINT,
+        invoiceDate DATE NOT NULL,
+        totalAmount FLOAT(53) NOT NULL,
+        customerId BIGINT NOT NULL,
+        medicineId BIGINT,
         PRIMARY KEY (id),
-        FOREIGN KEY (customer_id) REFERENCES customers(id),
-        FOREIGN KEY (medicine_id) REFERENCES medicine(id)
+        FOREIGN KEY (customerId) REFERENCES customers(id),
+        FOREIGN KEY (medicineId) REFERENCES medicine(id)
       )`
     );
 
   conn.query(`
       CREATE TABLE inventory (
         id BIGINT NOT NULL AUTO_INCREMENT,
-        date_added DATE NOT NULL,
+        dateAdded DATE NOT NULL,
         quantity INTEGER NOT NULL,
-        unit_price FLOAT(53) NOT NULL,
-        medicine_id BIGINT NOT NULL,
+        unitPrice FLOAT(53) NOT NULL,
+        medicineId BIGINT NOT NULL,
         PRIMARY KEY (id),
-        FOREIGN KEY (medicine_id) REFERENCES medicine(id)
+        FOREIGN KEY (medicineId) REFERENCES medicine(id)
       )`
     );
 };

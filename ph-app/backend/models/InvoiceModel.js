@@ -7,19 +7,19 @@ const Invoice = db.define("Invoice", {
     primaryKey: true,
     autoIncrement: true,
   },
-  invoice_date: {
+  invoiceDate: {
     type: DataTypes.DATEONLY,
     allowNull: false,
   },
-  total_amount: {
+  totalAmount: {
     type: DataTypes.DOUBLE,
     allowNull: false,
   },
-  customer_id:{
+  customerId:{
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  medicine_id:{
+  medicineId:{
     type: DataTypes.INTEGER,
     allowNull: false,
   }
