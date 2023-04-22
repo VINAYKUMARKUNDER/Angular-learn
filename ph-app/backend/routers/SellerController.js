@@ -1,13 +1,14 @@
 const express = require('express');
 const router = express.Router();
+const db = require('../database')
 
 const Seller = require('../models/SellerModel');
 
 // GET all sellers
 router.get('/', async (req, res) => {
   try {
-    const sellers = await Seller.find();
-    res.send(sellers);
+    const sellers = await Seller.findAll();
+    res.json(sellers);
   } catch (error) {
     res.status(500).send(error);
   }
@@ -16,13 +17,16 @@ router.get('/', async (req, res) => {
 // GET a seller by ID
 router.get('/:id', async (req, res) => {
   try {
-    const seller = await Seller.findById(req.params.id);
-    if (!seller) {
-      return res.status(404).send('Seller not found');
+
+    const seller= await  db.query(`select * from sellers where id = ${req.params.id}`)
+    // const seller = await Seller.findById(req.params.id);
+    if (JSON.stringify(seller) === '{}') {
+      return res.status(404).json(error="Seller is not found with seller id");
     }
-    res.send(seller);
+    else res.send(seller);
   } catch (error) {
-    res.status(500).send(error);
+    console.log(error)
+    res.status(500).json(error);
   }
 });
 
@@ -32,7 +36,7 @@ router.post('/', async (req, res) => {
     const seller =await new Seller.create(req.body);
     res.status(201).json(seller);
   } catch (error) {
-    res.status(500).send(error);
+    return res.status(500).json({ errors: error });
   }
 });
 

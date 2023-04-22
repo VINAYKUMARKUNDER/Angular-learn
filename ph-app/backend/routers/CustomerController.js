@@ -1,13 +1,23 @@
 const express = require('express');
 const router = express.Router();
 
+const db = require('../database')
+
 const Customer = require('../models/CustomerModel');
 
 // Get all customers
 router.get('/', async (req, res) => {
   try {
-    const customers = await Customer.findAll();
-    res.status(200).json(customers);
+    // const customers = await Customer.findAll();
+
+    db.query('select * from customers', (err, result)=>{
+        if(err)res.json(err="Error")
+        else {
+            console.log(result)
+            res.status(200).json(result)
+        }
+    })
+    // res.status(200).json(customers);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
@@ -32,6 +42,7 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const customer = await Customer.create(req.body);
+
     res.status(201).json(customer);
   } catch (err) {
     console.error(err.message);
@@ -40,7 +51,7 @@ router.post('/', async (req, res) => {
 });
 
 // Update customer
-exports.updateCustomer = async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const { name, email, phone, address } = req.body;
     let customer = await Customer.findByPk(req.params.id);
@@ -57,10 +68,10 @@ exports.updateCustomer = async (req, res) => {
     console.error(err.message);
     res.status(500).send('Server Error');
   }
-};
+});
 
 // Delete customer
-exports.deleteCustomer = async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     let customer = await Customer.findByPk(req.params.id);
     if (!customer) {
@@ -72,4 +83,7 @@ exports.deleteCustomer = async (req, res) => {
     console.error(err.message);
     res.status(500).send('Server Error');
   }
-};
+});
+
+
+module.exports=router;
