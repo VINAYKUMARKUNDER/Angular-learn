@@ -1,47 +1,47 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
-const Seller = require('./seller');
+const { DataTypes } = require("sequelize");
+const db = require("../database");
+const Seller = require("./SellerModel");
 
-const Medicine = sequelize.define('medicine', {
+const Medicine = db.define("medicine", {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
-    autoIncrement: true
+    autoIncrement: true,
   },
   productName: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   },
   manufacturer: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   },
   manufacturingDate: {
     type: DataTypes.DATEONLY,
-    allowNull: false
+    allowNull: false,
   },
   expiryDate: {
     type: DataTypes.DATEONLY,
-    allowNull: false
+    allowNull: false,
   },
   price: {
     type: DataTypes.DOUBLE,
-    allowNull: false
+    allowNull: false,
   },
   batchId: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   },
   totalLeafInOneBox: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: false,
   },
   about: {
     type: DataTypes.STRING,
-    allowNull: true
-  }
+    allowNull: true,
+  },
 });
 
-Medicine.belongsTo(Seller, { foreignKey: 'seller_id' });
+Medicine.belongsTo(Seller, { foreignKey: "seller_id" });
 
 module.exports = Medicine;

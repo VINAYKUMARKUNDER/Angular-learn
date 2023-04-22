@@ -1,29 +1,29 @@
-const Sequelize = require("sequelize");
-const sequelize = require("../database");
+const DataTypes = require("sequelize");
+const db = require("../database");
 
-const Medicine = require("./Medicine");
+const Medicine = require("./MedicineModel");
 
-const Inventory = sequelize.define("inventory", {
+const Inventory = db.define("inventory", {
   id: {
-    type: Sequelize.INTEGER,
+    type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
     allowNull: false,
   },
   quantity: {
-    type: Sequelize.INTEGER,
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
   unitPrice: {
-    type: Sequelize.FLOAT,
+    type: DataTypes.FLOAT,
     allowNull: false,
   },
   totalPrice: {
-    type: Sequelize.FLOAT,
+    type: DataTypes.FLOAT,
     allowNull: false,
   },
   dateAdded: {
-    type: Sequelize.DATEONLY,
+    type: DataTypes.DATEONLY,
     allowNull: false,
   },
 });

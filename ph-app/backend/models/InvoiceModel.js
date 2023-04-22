@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require("sequelize");
-const sequelize = require("../database");
+const db = require("../database");
 
-const Invoice = sequelize.define("Invoice", {
+const Invoice = db.define("Invoice", {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -18,8 +18,8 @@ const Invoice = sequelize.define("Invoice", {
 });
 
 
-const Customer = require("./Customer");
-const Medicine = require("./Medicine");
+const Customer = require("./CustomerModel");
+const Medicine = require("./MedicineModel");
 Invoice.belongsTo(Customer);
 Invoice.belongsTo(Medicine);
 

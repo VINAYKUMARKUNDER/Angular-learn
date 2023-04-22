@@ -1,31 +1,31 @@
-const Sequelize = require('sequelize');
+const DataTypes = require('sequelize');
 const db = require('../database');
 
 const Customer = db.define('customer', {
   id: {
-    type: Sequelize.BIGINT,
+    type: DataTypes.BIGINT,
     autoIncrement: true,
     primaryKey: true
   },
   name: {
-    type: Sequelize.STRING,
+    type: DataTypes.STRING,
     allowNull: false
   },
   email: {
-    type: Sequelize.STRING,
+    type: DataTypes.STRING,
     allowNull: false,
     unique: true
   },
   phone: {
-    type: Sequelize.STRING,
+    type: DataTypes.STRING,
     allowNull: false
   },
   address: {
-    type: Sequelize.STRING,
+    type: DataTypes.STRING,
     allowNull: false
   },
   password: {
-    type: Sequelize.STRING,
+    type: DataTypes.STRING,
     allowNull: false
   }
 });
