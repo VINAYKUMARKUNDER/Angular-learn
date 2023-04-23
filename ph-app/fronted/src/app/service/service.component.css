@@ -1,0 +1,25 @@
+.sr
+{
+width: 80%;
+border-radius: 10px;
+height: 40px;
+padding-left: 10px;
+font-weight: 700;
+
+}
+
+.btn
+{
+  border-radius: 10px;
+}
+
+.searchComponent{
+
+}
+
+.type{
+
+}
+.type > img{
+  width: 60%;
+}
