@@ -18,8 +18,8 @@
       <div class="col-md-7">
         <div class="searchComponent">
           <input
-            type="text"
             class="sr"
+            type="text" [(ngModel)]="searchTerm" (keyup)="searchList()"
             placeholder="Search here your medicine..."
           />
           <button class="btn btn-primary">Search</button>
@@ -33,6 +33,7 @@
         <img
           src="https://assets.pharmeasy.in/apothecary/images/medicine_ff.webp?dim=256x0"
           alt=""
+          (click)="searchValue('medicine')"
         />
         <h6>Medicine</h6>
       </div>
@@ -41,6 +42,7 @@
         <img
           src="https://assets.pharmeasy.in/apothecary/images/medicine_ff.webp?dim=256x0"
           alt=""
+          (click)="searchValue('medicine')"
         />
         <h6>Medicine</h6>
       </div>
@@ -49,38 +51,43 @@
         <img
           src="https://assets.pharmeasy.in/apothecary/images/medicine_ff.webp?dim=256x0"
           alt=""
+          (click)="searchValue('medicine')"
         />
         <h6>Medicine</h6>
       </div>
 
-      <div class="col-md-2  type">
+      <div class="col-md-2 type">
         <img
           src="https://assets.pharmeasy.in/apothecary/images/medicine_ff.webp?dim=256x0"
           alt=""
+          (click)="searchValue('medicine')"
         />
         <h6>Medicine</h6>
       </div>
 
-      <div class="col-md-2  type">
+      <div class="col-md-2 type">
         <img
           src="https://assets.pharmeasy.in/apothecary/images/medicine_ff.webp?dim=256x0"
           alt=""
+          (click)="searchValue('medicine')"
         />
         <h6>Medicine</h6>
       </div>
 
-      <div class="col-md-2  type">
+      <div class="col-md-2 type">
         <img
           src="https://assets.pharmeasy.in/apothecary/images/medicine_ff.webp?dim=256x0"
           alt=""
+          (click)="searchValue('medicine')"
         />
-        <h6>Medicine</h6>
+        <h6 >Medicine</h6>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Services -->
+<!--
 <section class="services">
   <div class="container">
     <div class="row">
@@ -148,4 +155,123 @@
       </div>
     </div>
   </div>
+</section> -->
+
+<!-- product -->
+
+<section class="product" *ngIf="status=='view'" >
+  <div class="container">
+    <div id="main">
+      <div *ngFor="let product of allMedicine" class="product">
+        <div
+          class="card">
+          <div  *ngIf="searchTerm==='' || product.type.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())">
+            <img class="img" src="" alt="Product Image" />
+            <div class="card-body">
+              <h5 class="card-title wrap">{{ product.type }}</h5>
+              <h6 class="card-title">{{ product.name }}</h6>
+              <p class="card-text wrap">{{ product.description }}</p>
+              <p class="card-text">${{ product.price }}</p>
+              <p class="card-text">rating {{ product.mfgcompany }}</p>
+              <button
+                class="btn btn-primary"
+                routerLink="/view"
+                >
+                View
+              </button>
+              <button class="btn btn1 btn-success" >
+                Add to Cart
+              </button>
+              <button class="btn wishlist">
+                <img
+
+                  alt=""
+                  class="wistlist-img"
+
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
+
+
+
+
+
+
+
+
+<div class="container" *ngIf="status=='create'">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3 mt-5">
+      <h2 class="text-center mb-4">Create new Medicine</h2>
+      <form #mData="ngForm" (ngSubmit)="medicineCreate(mData.value)">
+        <div class="form-group">
+          <label for="name">product Name</label>
+          <input type="text" class="form-control" id="productName" name="productName" ngModel  required >
+        </div>
+        <div class="form-group">
+          <label for="mfgcompany">mfg company</label>
+          <input type="text" class="form-control" id="mfgcompany" name="mfgcompany"  ngModel required>
+        </div>
+        <div class="form-group">
+          <label for="mfgdate">mfgdate</label>
+          <input type="date" class="form-control" id="mfgdate" name="mfgdate"  ngModel required>
+        </div>
+        <div class="form-group">
+          <label for="unit">unit</label>
+          <input type="number" class="form-control" id="unit" name="unit"  ngModel required>
+        </div>
+        <div class="form-group">
+          <label for="expdate">expdate</label>
+          <input type="date" class="form-control" id="expdate" name="expdate"  ngModel required>
+        </div>
+        <div class="form-group">
+          <label for="type">type</label>
+          <input type="text" class="form-control" id="type" name="type"  ngModel required>
+        </div>
+        <div class="form-group">
+          <label for="price">price</label>
+          <input type="text" class="form-control" id="price" name="price"  ngModel required>
+        </div>
+        <div class="form-group">
+          <label for="batchid">batchid</label>
+          <input type="text" class="form-control" id="batchid" name="batchid"  ngModel required>
+        </div>
+        <div class="form-group">
+          <label for="totalLeafInOneBox">totalLeafInOneBox</label>
+          <input type="number" class="form-control" id="totalLeafInOneBox" name="totalLeafInOneBox"  ngModel required>
+        </div>
+        <div class="form-group">
+          <label for="numberOfItemInOneLeaf">numberOfItemInOneLeaf</label>
+          <input type="number" class="form-control" id="numberOfItemInOneLeaf" name="numberOfItemInOneLeaf"  ngModel required>
+        </div>
+        <div class="form-group">
+          <label for="about">about</label>
+          <input type="text" class="form-control" id="about" name="about"  ngModel required>
+        </div>
+
+        <div class="form-group">
+          <label for="sellerId">sellerId</label>
+          <input type="number" class="form-control" id="sellerId" name="sellerId"  ngModel required>
+        </div>
+
+
+        <div class="form-group">
+          <label for="image">Image</label>
+          <input type="file" class="form-control" id="image" name="image"  ngModel required>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

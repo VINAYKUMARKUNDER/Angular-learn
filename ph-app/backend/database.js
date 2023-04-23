@@ -48,6 +48,7 @@ let genrateTable = () => {
       CREATE TABLE medicine (
         id BIGINT NOT NULL AUTO_INCREMENT,
         about VARCHAR(255),
+        image BLOB NOT NULL,
         batchId VARCHAR(30) NOT NULL,
         type VARCHAR(30) NOT NULL,
         expDate DATE NOT NULL,

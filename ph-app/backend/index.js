@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors');
 const app = express();
 const bodyParser = require('body-parser')
 const medicineRouter = require('./routers/MedicineController.js')
@@ -7,6 +8,8 @@ const CustomerRouter = require('./routers/CustomerController.js')
 const InvoiceRouter = require('./routers/InvoiceController.js')
 const InventoryRouter = require('./routers/InventoryController.js')
 const db = require('./database.js')
+
+app.use(cors());
 
 app.use(bodyParser.json());
 app.use('/api/v1/seller', SellerRouter);

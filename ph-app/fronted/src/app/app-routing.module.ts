@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ServiceComponent } from './service/service.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     component:HomePageComponent,
     path:''
+  },
+  {
+    component:AdminComponent,
+    path:'admin'
   }
 ];
 
