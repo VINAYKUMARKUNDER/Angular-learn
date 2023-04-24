@@ -63,45 +63,9 @@ export class AdminComponent implements OnInit {
 
 
   medicineUpdate(data: {}) {
-    if (Object.keys(data).length === 0) this.http.get(`${this.URL}medicine/${this.medicineId}`).subscribe((res) => {
-      this.getOneMedicine = res;
-    })
-
-    setTimeout(() => {
-      console.log(this.getOneMedicine)
-      this.about = this.getOneMedicine.about;
-      this.batchid = this.getOneMedicine.batchid;
-      this.expdate = this.getOneMedicine.expdate;
-      this.mfgcompany = this.getOneMedicine.mfgcompany;
-      this.mfgdate = this.getOneMedicine.mfgdate;
-      this.numberOfItemInOneLeaf = this.getOneMedicine.numberOfItemInOneLeaf;
-      this.price = this.getOneMedicine.price;
-      this.productName = this.getOneMedicine.productName;
-      this.sellerId = this.getOneMedicine.sellerId;
-      this.totalLeafInOneBox = this.getOneMedicine.totalLeafInOneBox;
-      this.type = this.getOneMedicine.type;
-      this.unit = this.getOneMedicine.unit;
-    }, 1000);
-
-
-    if (Object.keys(data).length > 0) this.http.put(`${this.URL}medicine/${this.medicineId}`, data).subscribe((res) => {
-      this.status = 'view'
-
-    });
-  }
-
-
-  medicineDelete(data:string) {
-    console.log('sss')
-    if(data=='set'){
-      this.http.get(`${this.URL}medicine/${this.medicineId}`).subscribe((res) => {
-        console.log(res)
+    if (Object.keys(data).length < 3 && this.medicineId > 0) this.http.get(`${this.URL}medicine/${this.medicineId}`).subscribe({
+      next: res => {
         this.getOneMedicine = res;
-      })
-
-      setTimeout(() => {
-        console.log(this.getOneMedicine)
-        this.deleteId=this.getOneMedicine.id;
         this.about = this.getOneMedicine.about;
         this.batchid = this.getOneMedicine.batchid;
         this.expdate = this.getOneMedicine.expdate;
@@ -114,18 +78,72 @@ export class AdminComponent implements OnInit {
         this.totalLeafInOneBox = this.getOneMedicine.totalLeafInOneBox;
         this.type = this.getOneMedicine.type;
         this.unit = this.getOneMedicine.unit;
-      }, 1000);
+
+      },
+      error: error => {
+        alert('Data is not found with id...');
+      }
+    });
+
+    if (Object.keys(data).length > 3) this.http.put(`${this.URL}medicine/${this.medicineId}`, data).subscribe({
+        next:res=>{
+            alert('updated successfully...')
+        },
+        error: err=> {
+          alert('some error in server...')
+        },
+    });
+  };
+
+
+
+
+
+// delete data
+  medicineDelete(data: string) {
+    if (data == 'set' && this.medicineId > 0) {
+      this.http.get(`${this.URL}medicine/${this.medicineId}`).subscribe({
+        next: res => {
+          this.getOneMedicine = res;
+          this.about = this.getOneMedicine.about;
+          this.batchid = this.getOneMedicine.batchid;
+          this.expdate = this.getOneMedicine.expdate;
+          this.mfgcompany = this.getOneMedicine.mfgcompany;
+          this.mfgdate = this.getOneMedicine.mfgdate;
+          this.numberOfItemInOneLeaf = this.getOneMedicine.numberOfItemInOneLeaf;
+          this.price = this.getOneMedicine.price;
+          this.productName = this.getOneMedicine.productName;
+          this.sellerId = this.getOneMedicine.sellerId;
+          this.totalLeafInOneBox = this.getOneMedicine.totalLeafInOneBox;
+          this.type = this.getOneMedicine.type;
+          this.unit = this.getOneMedicine.unit;
+
+        },
+        error: error => {
+          alert('Data is not found with id...');
+        }
+      });
     }
-   else if(data=='delete') this.http.delete(`${this.URL}medicine/${this.deleteId}`).subscribe((res) => {
-      console.log(res);
-    })
+    else if (data == 'delete') this.http.delete(`${this.URL}medicine/${this.medicineId}`).subscribe({
+      next: res=>alert('deleted successfully...'),
+      error: error=>alert('server error...')
+
+    });
   }
 
 
-  update(id:number){
+  update(id: number) {
     console.log(id)
-    this.medicineId=id;
+    this.medicineId = id;
     this.clickStatusView('update');
+    this.medicineUpdate({});
+  }
+
+  delete(id: number) {
+    console.log(id)
+    this.medicineId = id;
+    this.clickStatusView('delete');
+    this.medicineDelete('set');
   }
 
 }

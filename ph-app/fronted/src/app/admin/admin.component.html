@@ -10,13 +10,15 @@
       <button class="btn btn-primary" (click)="clickStatusView('update')">
         Update
       </button>
-      <button class="btn btn-primary" (click)="clickStatusView('delete')" [(ngModel)]="deleteId">
+      <button class="btn btn-primary" (click)="clickStatusView('delete')" >
         Delete
       </button>
     </div>
   </div>
 </div>
 
+
+<!-- view page -->
 <section class="product" *ngIf="status == 'view'">
   <div class="container">
     <div id="main">
@@ -39,9 +41,7 @@
               </button>
               <button
                 class="btn btn1 btn-success"
-
-                (click)="clickStatusView('delete')"
-                (keyup)="medicineDelete('set')"
+                (click)="delete(product.id)"
               >
                 Delete
               </button>
@@ -53,6 +53,9 @@
   </div>
 </section>
 
+
+
+<!-- create page -->
 <div class="container" *ngIf="status == 'create'">
   <div class="row">
     <div class="col-lg-6 offset-lg-3 mt-5">
@@ -212,11 +215,15 @@
   </div>
 </div>
 
+
+
+<!-- update page -->
+
 <div class="container" *ngIf="status == 'update'">
   <div class="row">
     <div class="col-lg-6 offset-lg-3 mt-5">
       <h2 class="text-center mb-4">Update Medicine</h2>
-      <div class="form-group">
+      <div class="form-group1">
         <label for="mfgdate">Medicine Number</label>
         <input
           type="number"
@@ -228,7 +235,7 @@
           required
         />
       </div>
-      <form #mData="ngForm" (ngSubmit)="medicineUpdate(mData.value)">
+      <form #uData="ngForm" (ngSubmit)="medicineUpdate(uData.value)">
         <div class="form-group">
           <label for="name">product Name</label>
           <input
@@ -384,24 +391,28 @@
   </div>
 </div>
 
+
+<!-- delete page -->
+
 <div class="container" *ngIf="status == 'delete'">
   <div class="row">
     <div class="col-lg-6 offset-lg-3 mt-5">
       <h2 class="text-center mb-4">Delete Medicine</h2>
-      <div class="form-group">
+      <div class="form-group1">
         <label for="mfgdate">Medicine Number</label>
         <input
           type="number"
           class="form-control"
           id="id"
           name="id"
+          [(ngModel)]="medicineId"
           (keyup)="medicineDelete('set')"
-          [(ngModel)]="deleteId"
+
           required
         />
       </div>
       <div class="card">
-        <div>
+        <div *ngIf="productName.length>0">
           <img class="img" src="" alt="Product Image" />
           <div class="card-body">
             <h5 class="card-title wrap">{{ productName }}</h5>
