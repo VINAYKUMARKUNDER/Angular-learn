@@ -46,15 +46,33 @@ router.post("/", async (req, res) => {
 // Update a medicine
 router.put("/:id", async (req, res) => {
   const id = req.params.id;
-  const { name, description, price } = req.body;
   try {
     const medicine = await Medicine.findByPk(id);
     if (medicine) {
-      medicine.name = name;
-      medicine.description = description;
-      medicine.price = price;
-      await medicine.save();
-      res.json(medicine);
+    console.log(req.body) 
+     const updateedMedicine = await Medicine.update(
+      {
+      about :req.body.about,
+      batchid:req.body.batchid,
+      expdate:req.body.expdate,
+      mfgcompany:req.body.mfgcompany,
+      mfgdate :req.body.mfgdate,
+      numberOfItemInOneLeaf :req.body.numberOfItemInOneLeaf,
+      price :req.body.price,
+      productName:req.body.productName,
+      sellerId :req.body.sellerId,
+      totalLeafInOneBox :req.body.totalLeafInOneBox,
+      type :req.body.type,
+      unit :req.body.unit
+      },
+     {
+      where: {
+        id: req.params.id,
+      },
+    }
+     
+     );
+      res.json(updateedMedicine);
     } else {
       res.status(404).json({ message: "Medicine not found" });
     }
