@@ -1,0 +1,74 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-6">
+      <h2>Invoice</h2>
+      <p>Date: <span id="date"></span></p>
+    </div>
+    <div class="col-sm-6 text-right">
+      <h5>seller name</h5>
+      <p>address</p>
+      <p>gst</p>
+      <p>contect</p>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-sm-6">
+      <h4>Bill To:</h4>
+      <p>customer name</p>
+      <p>Address</p>
+      <p>mobile</p>
+      <p>extra</p>
+    </div>
+    <div class="col-sm-6 text-right">
+      <h4>Order Details:</h4>
+      <p>Order #: <span id="order-number"></span></p>
+      <p>Order Date: <span id="order-date"></span></p>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-sm-12">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Product 1</td>
+            <td>Description 1</td>
+            <td>2</td>
+            <td>$10.00</td>
+            <td>$20.00</td>
+          </tr>
+          <tr>
+            <td>Product 2</td>
+            <td>Description 2</td>
+            <td>1</td>
+            <td>$25.00</td>
+            <td>$25.00</td>
+          </tr>
+          <tr>
+            <td colspan="4" class="text-right">Subtotal</td>
+            <td>$45.00</td>
+          </tr>
+          <tr>
+            <td colspan="4" class="text-right">Tax</td>
+            <td>$4.05</td>
+          </tr>
+          <tr>
+            <td colspan="4" class="text-right">Total</td>
+            <td>$49.05</td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-primary" (click)="print()">Print Invoice</button>
+
+    </div>
+  </div>
+</div>

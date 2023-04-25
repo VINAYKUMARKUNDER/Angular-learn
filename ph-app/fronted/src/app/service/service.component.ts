@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { CartServiceService } from '../cart/cart-service.service';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServiceComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private cartService:CartServiceService) { }
 
   allMedicine: any = [];
   allMedicineSearchHelps: any = [];
@@ -55,6 +56,11 @@ export class ServiceComponent implements OnInit {
   searchValue(value:string){
     this.searchTerm=value;
     this.searchList();
+  }
+
+
+  addProductInCart(product:any){
+    this.cartService.addToCart(product);
   }
 
 

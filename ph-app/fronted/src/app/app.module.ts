@@ -10,6 +10,9 @@ import { ContainerComponent } from './container/container.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ServiceComponent } from './service/service.component';
 import { AdminComponent } from './admin/admin.component';
+import { InvoiceComponent } from './invoice/invoice.component';
+import { ViewComponent } from './view/view.component';
+import { CartComponent } from './cart/cart.component';
 
 
 
@@ -20,7 +23,10 @@ import { AdminComponent } from './admin/admin.component';
     ContainerComponent,
     HomePageComponent,
     ServiceComponent,
-    AdminComponent
+    AdminComponent,
+    InvoiceComponent,
+    ViewComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
