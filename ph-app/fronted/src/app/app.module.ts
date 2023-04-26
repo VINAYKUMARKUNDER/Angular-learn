@@ -13,6 +13,9 @@ import { AdminComponent } from './admin/admin.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { ViewComponent } from './view/view.component';
 import { CartComponent } from './cart/cart.component';
+import { CustomerComponent } from './customer/customer.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -26,7 +29,10 @@ import { CartComponent } from './cart/cart.component';
     AdminComponent,
     InvoiceComponent,
     ViewComponent,
-    CartComponent
+    CartComponent,
+    CustomerComponent,
+    SignUpComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

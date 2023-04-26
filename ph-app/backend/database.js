@@ -89,6 +89,17 @@ let genrateTable = () => {
         FOREIGN KEY (medicineId) REFERENCES medicine(id)
       )`
     );
+
+    conn.query(`
+    create table cart (
+      cartId integer not null, 
+      customerId bigint, 
+      medicinesId bigint, 
+      primary key (cartId),
+      foreign key (customerId) references customers (id),
+      foreign key (medicinesId) references medicine (id)
+    )`
+    );
 };
 
 
