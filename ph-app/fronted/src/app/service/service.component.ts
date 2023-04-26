@@ -60,7 +60,9 @@ export class ServiceComponent implements OnInit {
 
 
   addProductInCart(product:any){
-    this.cartService.addToCart(product);
+    let res= this.cartService.addToCart(product);
+    if(res)alert('product added successfully...');
+    else alert('product is already added...')
   }
 
 

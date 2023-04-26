@@ -16,9 +16,10 @@ export class CartComponent implements OnInit{
   public grandTotal : number = 0;
 
   ngOnInit(): void{
-
-
-
+    try {
+      this.products=JSON.parse(localStorage.getItem('products') || '');
+    } catch (error) {}
+        console.log(this.products)
     }
 
 

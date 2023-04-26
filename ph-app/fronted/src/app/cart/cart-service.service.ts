@@ -8,7 +8,9 @@ export class CartServiceService {
   constructor() { }
 
   ngOnInit(): void {
-    this.cartItem=JSON.parse(localStorage.getItem('products') || '');
+    try {
+      this.cartItem=JSON.parse(localStorage.getItem('products') || '');
+    } catch (error) {}
   }
 
 
@@ -16,7 +18,30 @@ export class CartServiceService {
 
 
 
-  addToCart(pro: any) {
+  addToCart(product: any) {
+    try {
+      this.cartItem=JSON.parse(localStorage.getItem('products') || '');
+    } catch (error) {}
+
+    let pro: any = {
+          id: product.id,
+          about: product.about,
+          batchid: product.batchid,
+          expdate: product.expdate,
+          mfgcompany: product.mfgcompany,
+          mfgdate: product.mfgdate,
+          numberOfItemInOneLeaf: product.numberOfItemInOneLeaf,
+          price: product.price,
+          productName: product.productName,
+          sellerId: product.sellerId,
+          totalLeafInOneBox: product.totalLeafInOneBox,
+          type: product.type,
+          unit: product.unit,
+          total: product.price,
+          quintity: 1
+    }
+
+
     let val = this.checkProduct(pro);
     if (val.status) {
       return false;
