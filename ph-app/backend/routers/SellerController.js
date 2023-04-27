@@ -34,11 +34,14 @@ router.get("/:id", async (req, res) => {
 // POST a new seller
 router.post("/", async (req, res) => {
   try {
-    // console.log(req.body)
-
+    
+    // const emaildata = await db.query(`select * from Sellers where email = '${req.body.email}'`);
+   
+    // if(Object.keys(emaildata[0][0]).length>2)return res.status(400).json(email= "email is already added...");
     const seller = await Seller.create(req.body);
-    console.log(seller);
+
     res.status(201).json(seller);
+    
   } catch (error) {
     return res.status(500).json({ errors: error });
   }

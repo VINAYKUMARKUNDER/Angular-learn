@@ -146,4 +146,31 @@ export class AdminComponent implements OnInit {
     this.medicineDelete('set');
   }
 
+
+  accountCreate(data:any){
+
+   let d= {
+      "name":"Vinay",
+      "address":"songardha",
+      "email":"c@1235",
+      "about":"aaa",
+      "gst":"sssa",
+      "phone":"7390016161"
+  }
+    console.log(data)
+    this.http.post(`${this.URL}seller/`, data).subscribe({
+      next: res => alert('account created successfully...'),
+      error: error=>{
+        if(error.status==400)alert('email is already added in db...');
+        else alert('Internal server error..')
+      }
+
+    })
+
+  }
+
+
 }
+
+
+
