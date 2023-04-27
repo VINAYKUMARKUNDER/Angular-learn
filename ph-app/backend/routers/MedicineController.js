@@ -1,5 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const multer = require('multer');
+const app = express();
+// app.use(cors());
 const Medicine = require("../models/MedicineModel");
 
 const db = require("../database");
@@ -97,6 +100,23 @@ router.delete("/:id", async (req, res) => {
     console.error(error);
     res.status(500).json({ message: "Server Error" });
   }
+});
+
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, './uploads');
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}_${file.originalname}`);
+  }
+});
+const upload = multer({ storage });
+
+
+router.post('/upload/', upload.single('image'), (req, res) => {
+  console.log(req.file)
+  res.json(req.file);
 });
 
 module.exports = router;

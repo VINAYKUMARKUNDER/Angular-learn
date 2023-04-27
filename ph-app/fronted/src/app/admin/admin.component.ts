@@ -28,9 +28,17 @@ export class AdminComponent implements OnInit {
   type: string = '';
   unit: number = 0;
   status: string = '';
+  image:string='ab.png'
   getOneMedicine: any = {};
+  getImageData: any = {};
   fetchAgen: Boolean = true;
   deleteId: number = 0;
+  selectedFile: File | null = null;
+
+onFileSelected(event:any): void {
+  this.selectedFile = event.target.files[0];
+}
+
 
   ngOnInit(): void {
     this.getAllMedicine();
@@ -148,16 +156,6 @@ export class AdminComponent implements OnInit {
 
 
   accountCreate(data:any){
-
-   let d= {
-      "name":"Vinay",
-      "address":"songardha",
-      "email":"c@1235",
-      "about":"aaa",
-      "gst":"sssa",
-      "phone":"7390016161"
-  }
-    console.log(data)
     this.http.post(`${this.URL}seller/`, data).subscribe({
       next: res => alert('account created successfully...'),
       error: error=>{
@@ -170,7 +168,26 @@ export class AdminComponent implements OnInit {
   }
 
 
+
+  onSubmit(): void {
+    const formData = new FormData();
+    formData.append('image', this.selectedFile || '');
+
+    this.http.post(`${this.URL}medicine/upload/`, formData).subscribe({
+      next:res=>{
+        alert('image upload successfullt..')
+        this.getImageData=res;
+
+        this.image=(this.getImageData.path)
+      },
+      error:err=>{
+        alert(err);
+        console.log(err)
+      }
+  });
+
+
+
 }
 
-
-
+}
