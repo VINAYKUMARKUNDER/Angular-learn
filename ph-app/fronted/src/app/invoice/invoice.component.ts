@@ -11,7 +11,7 @@ export class InvoiceComponent {
 
   constructor(private http:HttpClient){}
 
-  // @ViewChild('invoice', { static: false }) Invoice: ElementRef;
+
 
 
   print() {
@@ -41,7 +41,7 @@ export class InvoiceComponent {
 
 
   genrateInvoice(){
-      
+
   }
 
 

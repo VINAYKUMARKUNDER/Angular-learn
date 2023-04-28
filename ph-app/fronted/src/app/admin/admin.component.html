@@ -198,10 +198,10 @@
             required
           />
         </div>
-        <div >
-          <input type="file" (change)="onFileSelected($event)" (click)="onSubmit()"   required />
+        <form (submit)="onSubmit()" >
+          <input type="file" (change)="onFileSelected($event)"   required />
           <button type="submit">Upload</button>
-        </div>
+        </form>
 
 
         <div class="form-group">
