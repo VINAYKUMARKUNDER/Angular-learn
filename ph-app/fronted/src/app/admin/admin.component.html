@@ -29,13 +29,13 @@
       <div *ngFor="let product of allMedicine" class="product">
         <div class="card">
           <div>
-            <img class="img" src="" alt="Product Image" />
+            <img class="img" src={{product.image}} alt="Product Image" />
             <div class="card-body">
-              <h5 class="card-title wrap">{{ product.productName }}</h5>
-              <h6 class="card-title">{{ product.type }}</h6>
-              <p class="card-text wrap">{{ product.description }}</p>
-              <p class="card-text">${{ product.price }}</p>
-              <p class="card-text">rating {{ product.mfgcompany }}</p>
+              <h5 class="card-title wrap">Name: {{ product.productName }}</h5>
+              <h6 class="card-title">Type: {{ product.type }}</h6>
+              <p class="card-text wrap">Description: {{ product.description }}</p>
+              <p class="card-text">Price: {{ product.price}}Ru.</p>
+              <p class="card-text">Company Name: {{ product.mfgcompany }}</p>
               <button
                 class="btn btn-primary"
 

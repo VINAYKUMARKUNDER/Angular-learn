@@ -164,15 +164,15 @@
     <div id="main">
       <div *ngFor="let product of allMedicine" class="product">
         <div
-          class="card">
+          class="card" (click)="viewDetails(product)">
           <div  *ngIf="searchTerm==='' || product.type.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())">
             <img class="img" src="" alt="Product Image" />
             <div class="card-body">
-              <h5 class="card-title wrap">{{ product.type }}</h5>
-              <h6 class="card-title">{{ product.name }}</h6>
-              <p class="card-text wrap">{{ product.description }}</p>
-              <p class="card-text">${{ product.price }}</p>
-              <p class="card-text">rating {{ product.mfgcompany }}</p>
+              <h5 class="card-title wrap">Type: {{ product.type }}</h5>
+              <h6 class="card-title">Product Name: {{ product.name }}</h6>
+              <p class="card-text wrap">Description: {{ product.description }}</p>
+              <p class="card-text">Price: {{ product.price }} Ru.</p>
+              <p class="card-text">Company: {{ product.mfgcompany }}</p>
               <button
                 class="btn btn-primary"
                 routerLink="/view"
@@ -180,16 +180,9 @@
                 View
               </button>
               <button class="btn btn1 btn-success" (click)="addProductInCart(product)" >
-                Add to Cart
+                Add Cart
               </button>
-              <button class="btn wishlist">
-                <img
 
-                  alt=""
-                  class="wistlist-img"
-
-                />
-              </button>
             </div>
           </div>
         </div>

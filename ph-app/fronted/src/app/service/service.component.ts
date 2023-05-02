@@ -66,4 +66,10 @@ export class ServiceComponent implements OnInit {
   }
 
 
+
+  viewDetails(product:{}){
+    console.log(product)
+  }
+
+
 }
