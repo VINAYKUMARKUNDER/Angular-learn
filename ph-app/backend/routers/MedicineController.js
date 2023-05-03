@@ -85,6 +85,21 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+
+// get all exprie medicine alert before 1 month..
+router.get("/al/alert/", async (req,res)=>{
+ const data= await db.query(`SELECT * FROM medicine WHERE expdate > NOW() AND expdate <= DATE_ADD(NOW(), INTERVAL 1 MONTH)`, (err,result)=>{
+      // return res.json(result)
+  })
+
+
+//  const data= await Medicine.(`SELECT * FROM medicine WHERE expdate > NOW() AND expdate <= DATE_ADD(NOW(), INTERVAL 1 MONTH`)
+
+  console.log(data)
+  res.status(200).json(data[0]);
+})
+
+
 // Delete a medicine
 router.delete("/:id", async (req, res) => {
   const id = req.params.id;

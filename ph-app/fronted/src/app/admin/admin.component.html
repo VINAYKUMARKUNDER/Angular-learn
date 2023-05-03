@@ -1,4 +1,14 @@
-<div class="container">
+
+
+
+<div class="alert alert-danger" (click)="clickStatusView('alert')" *ngIf="alertStatus">
+  <p><strong>Alert!</strong> Indicates Your {{alertData.length}} medicines is expire within months..</p>
+  <button (click)="alertStatusHandler()">X</button>
+</div>
+
+<div class="view">
+
+
   <div class="row">
     <div class="col-md-4">
       <button class="btn btn-primary" (click)="clickStatusView('create')">
@@ -10,505 +20,539 @@
       <button class="btn btn-primary" (click)="clickStatusView('update')">
         Update
       </button>
-      <button class="btn btn-primary" (click)="clickStatusView('delete')" >
+      <button class="btn btn-primary" (click)="clickStatusView('delete')">
         Delete
       </button>
 
-      <button class="btn btn-primary" (click)="clickStatusView('account')" >
+      <button class="btn btn-primary" (click)="clickStatusView('account')">
         Create Account
+      </button>
+
+      <button class="btn btn-primary" (click)="clickStatusView('alert')">
+        expire product
       </button>
     </div>
   </div>
-</div>
 
-
-<!-- view page -->
-<section class="product" *ngIf="status == 'view'">
-  <div class="container">
-    <div id="main">
-      <div *ngFor="let product of allMedicine" class="product">
-        <div class="card">
-          <div>
-            <img class="img" src={{product.image}} alt="Product Image" />
-            <div class="card-body">
-              <h5 class="card-title wrap">Name: {{ product.productName }}</h5>
-              <h6 class="card-title">Type: {{ product.type }}</h6>
-              <p class="card-text wrap">Description: {{ product.description }}</p>
-              <p class="card-text">Price: {{ product.price}}Ru.</p>
-              <p class="card-text">Company Name: {{ product.mfgcompany }}</p>
-              <button
-                class="btn btn-primary"
-
-                (click)="update(product.id)"
-              >
-                Update
-              </button>
-              <button
-                class="btn btn1 btn-success"
-                (click)="delete(product.id)"
-              >
-                Delete
-              </button>
+  <!-- view page -->
+  <section *ngIf="status == 'view'">
+    <div class="container">
+      <div id="main">
+        <div *ngFor="let product of allMedicine" class="product">
+          <div class="card">
+            <div>
+              <img class="img" src="{{ product.image }}" alt="Product Image" />
+              <div class="card-body">
+                <h5 class="card-title wrap">Name: {{ product.productName }}</h5>
+                <h6 class="card-title">Type: {{ product.type }}</h6>
+                <p class="card-text wrap">
+                  Description: {{ product.description }}
+                </p>
+                <p class="card-text">Price: {{ product.price }}Ru.</p>
+                <p class="card-text">Company Name: {{ product.mfgcompany }}</p>
+                <button class="btn btn-primary" (click)="update(product.id)">
+                  Update
+                </button>
+                <button
+                  class="btn btn1 btn-success"
+                  (click)="delete(product.id)"
+                >
+                  Delete
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-
-
-<!-- create page -->
-<div class="container" *ngIf="status == 'create'">
-  <div class="row">
-    <div class="col-lg-6 offset-lg-3 mt-5">
-      <h2 class="text-center mb-4">Create new Medicine</h2>
-      <form #mData="ngForm" (ngSubmit)="medicineCreate(mData.value)">
-        <div class="form-group">
-          <label for="name">product Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="productName"
-            name="productName"
-            ngModel
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="mfgcompany">mfg company</label>
-          <input
-            type="text"
-            class="form-control"
-            id="mfgcompany"
-            name="mfgcompany"
-            ngModel
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="mfgdate">mfgdate</label>
-          <input
-            type="date"
-            class="form-control"
-            id="mfgdate"
-            name="mfgdate"
-            ngModel
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="unit">unit</label>
-          <input
-            type="number"
-            class="form-control"
-            id="unit"
-            name="unit"
-            ngModel
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="expdate">expdate</label>
-          <input
-            type="date"
-            class="form-control"
-            id="expdate"
-            name="expdate"
-            ngModel
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="type">type</label>
-          <input
-            type="text"
-            class="form-control"
-            id="type"
-            name="type"
-            ngModel
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="price">price</label>
-          <input
-            type="text"
-            class="form-control"
-            id="price"
-            name="price"
-            ngModel
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="batchid">batchid</label>
-          <input
-            type="text"
-            class="form-control"
-            id="batchid"
-            name="batchid"
-            ngModel
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="totalLeafInOneBox">totalLeafInOneBox</label>
-          <input
-            type="number"
-            class="form-control"
-            id="totalLeafInOneBox"
-            name="totalLeafInOneBox"
-            ngModel
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="numberOfItemInOneLeaf">numberOfItemInOneLeaf</label>
-          <input
-            type="number"
-            class="form-control"
-            id="numberOfItemInOneLeaf"
-            name="numberOfItemInOneLeaf"
-            ngModel
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="about">about</label>
-          <input
-            type="text"
-            class="form-control"
-            id="about"
-            name="about"
-            ngModel
-            required
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="sellerId">sellerId</label>
-          <input
-            type="number"
-            class="form-control"
-            id="sellerId"
-            name="sellerId"
-            ngModel
-            required
-          />
-        </div>
-        <form (submit)="onSubmit()" >
-          <input type="file" (change)="onFileSelected($event)"   required />
-          <button type="submit">Upload</button>
-        </form>
-
-
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary">Create</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-
-
-
-<!-- update page -->
-
-<div class="container" *ngIf="status == 'update'">
-  <div class="row">
-    <div class="col-lg-6 offset-lg-3 mt-5">
-      <h2 class="text-center mb-4">Update Medicine</h2>
-      <div class="form-group1">
-        <label for="mfgdate">Medicine Number</label>
-        <input
-          type="number"
-          class="form-control"
-          id="id"
-          name="id"
-          (keyup)="medicineUpdate('{}')"
-          [(ngModel)]="medicineId"
-          required
-        />
-      </div>
-      <form #uData="ngForm" (ngSubmit)="medicineUpdate(uData.value)">
-        <div class="form-group">
-          <label for="name">product Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="productName"
-            name="productName"
-            [(ngModel)]="productName"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="mfgcompany">mfg company</label>
-          <input
-            type="text"
-            class="form-control"
-            id="mfgcompany"
-            name="mfgcompany"
-            [(ngModel)]="mfgcompany"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="mfgdate">mfgdate</label>
-          <input
-            type="date"
-            class="form-control"
-            id="mfgdate"
-            name="mfgdate"
-            [(ngModel)]="mfgdate"
-            ngModel
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="unit">unit</label>
-          <input
-            type="number"
-            class="form-control"
-            id="unit"
-            name="unit"
-            [(ngModel)]="unit"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="expdate">expdate</label>
-          <input
-            type="date"
-            class="form-control"
-            id="expdate"
-            name="expdate"
-            [(ngModel)]="expdate"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="type">type</label>
-          <input
-            type="text"
-            class="form-control"
-            id="type"
-            name="type"
-            [(ngModel)]="type"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="price">price</label>
-          <input
-            type="text"
-            class="form-control"
-            id="price"
-            name="price"
-            [(ngModel)]="price"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="batchid">batchid</label>
-          <input
-            type="text"
-            class="form-control"
-            id="batchid"
-            name="batchid"
-            [(ngModel)]="batchid"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="totalLeafInOneBox">totalLeafInOneBox</label>
-          <input
-            type="number"
-            class="form-control"
-            id="totalLeafInOneBox"
-            name="totalLeafInOneBox"
-            [(ngModel)]="totalLeafInOneBox"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="numberOfItemInOneLeaf">numberOfItemInOneLeaf</label>
-          <input
-            type="number"
-            class="form-control"
-            id="numberOfItemInOneLeaf"
-            name="numberOfItemInOneLeaf"
-            [(ngModel)]="numberOfItemInOneLeaf"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="about">about</label>
-          <input
-            type="text"
-            class="form-control"
-            id="about"
-            name="about"
-            [(ngModel)]="about"
-            required
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="sellerId">sellerId</label>
-          <input
-            type="number"
-            class="form-control"
-            id="sellerId"
-            name="sellerId"
-            [(ngModel)]="sellerId"
-            required
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="image">Image</label>
-          <input
-            type="file"
-            class="form-control"
-            id="image"
-            name="image"
-            ngModel
-            required
-          />
-        </div>
-
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary">Update</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-
-
-<!-- delete page -->
-
-<div class="container" *ngIf="status == 'delete'">
-  <div class="row">
-    <div class="col-lg-6 offset-lg-3 mt-5">
-      <h2 class="text-center mb-4">Delete Medicine</h2>
-      <div class="form-group1">
-        <label for="mfgdate">Medicine Number</label>
-        <input
-          type="number"
-          class="form-control"
-          id="id"
-          name="id"
-          [(ngModel)]="medicineId"
-          (keyup)="medicineDelete('set')"
-
-          required
-        />
-      </div>
-      <div class="card">
-        <div *ngIf="productName.length>0">
-          <img class="img" src="" alt="Product Image" />
-          <div class="card-body">
-            <h5 class="card-title wrap">{{ productName }}</h5>
-            <h6 class="card-title">{{ type }}</h6>
-            <p class="card-text wrap">{{ about }}</p>
-            <p class="card-text">${{ price }}</p>
-            <p class="card-text">company{{ mfgcompany }}</p>
+  <section *ngIf="status == 'alert'">
+    <div class="container">
+      <div id="main">
+        <div *ngFor="let product of alertData" class="product">
+          <div class="card">
+            <div>
+              <p class="alert alert-danger">{{product.expDate}}</p>
+              <img class="img" src="{{ product.image }}" alt="Product Image" />
+              <div class="card-body">
+                <h5 class="card-title wrap">Name: {{ product.productName }}</h5>
+                <h6 class="card-title">Type: {{ product.type }}</h6>
+                <p class="card-text wrap">
+                  Description: {{ product.description }}
+                </p>
+                <p class="card-text">Price: {{ product.price }}Ru.</p>
+                <p class="card-text">Company Name: {{ product.mfgcompany }}</p>
+                <button class="btn btn-primary" (click)="update(product.id)">
+                  Update
+                </button>
+                <button
+                  class="btn btn1 btn-success"
+                  (click)="delete(product.id)"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary"  (click)="medicineDelete('delete')">Delete</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- create page -->
+  <div class="container" *ngIf="status == 'create'">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3 mt-5">
+        <h2 class="text-center mb-4">Create new Medicine</h2>
+        <form
+          #mData="ngForm"
+          (ngSubmit)="medicineCreate(mData.value)"
+          class="grouping"
+        >
+          <div class="form-group">
+            <label for="name">product Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="productName"
+              name="productName"
+              ngModel
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="mfgcompany">mfg company</label>
+            <input
+              type="text"
+              class="form-control"
+              id="mfgcompany"
+              name="mfgcompany"
+              ngModel
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="mfgdate">mfgdate</label>
+            <input
+              type="date"
+              class="form-control"
+              id="mfgdate"
+              name="mfgdate"
+              ngModel
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="unit">unit</label>
+            <input
+              type="number"
+              class="form-control"
+              id="unit"
+              name="unit"
+              ngModel
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="expdate">expdate</label>
+            <input
+              type="date"
+              class="form-control"
+              id="expdate"
+              name="expdate"
+              ngModel
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="type">type</label>
+            <input
+              type="text"
+              class="form-control"
+              id="type"
+              name="type"
+              ngModel
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="price">price</label>
+            <input
+              type="text"
+              class="form-control"
+              id="price"
+              name="price"
+              ngModel
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="batchid">batchid</label>
+            <input
+              type="text"
+              class="form-control"
+              id="batchid"
+              name="batchid"
+              ngModel
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="totalLeafInOneBox">totalLeafInOneBox</label>
+            <input
+              type="number"
+              class="form-control"
+              id="totalLeafInOneBox"
+              name="totalLeafInOneBox"
+              ngModel
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="numberOfItemInOneLeaf">numberOfItemInOneLeaf</label>
+            <input
+              type="number"
+              class="form-control"
+              id="numberOfItemInOneLeaf"
+              name="numberOfItemInOneLeaf"
+              ngModel
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="about">about</label>
+            <input
+              type="text"
+              class="form-control"
+              id="about"
+              name="about"
+              ngModel
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="sellerId">sellerId</label>
+            <input
+              type="number"
+              class="form-control"
+              id="sellerId"
+              name="sellerId"
+              ngModel
+              required
+            />
+          </div>
+          <form (submit)="onSubmit()">
+            <input type="file" (change)="onFileSelected($event)" required />
+            <button type="submit">Upload</button>
+          </form>
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Create</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- update page -->
+
+  <div class="container" *ngIf="status == 'update'">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3 mt-5">
+        <h2 class="text-center mb-4">Update Medicine</h2>
+        <div class="form-group1">
+          <label for="mfgdate">Medicine Number</label>
+          <input
+            type="number"
+            class="form-control"
+            id="id"
+            name="id"
+            (keyup)="medicineUpdate('{}')"
+            [(ngModel)]="medicineId"
+            required
+          />
+        </div>
+        <form #uData="ngForm" (ngSubmit)="medicineUpdate(uData.value)">
+          <div class="form-group">
+            <label for="name">product Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="productName"
+              name="productName"
+              [(ngModel)]="productName"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="mfgcompany">mfg company</label>
+            <input
+              type="text"
+              class="form-control"
+              id="mfgcompany"
+              name="mfgcompany"
+              [(ngModel)]="mfgcompany"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="mfgdate">mfgdate</label>
+            <input
+              type="date"
+              class="form-control"
+              id="mfgdate"
+              name="mfgdate"
+              [(ngModel)]="mfgdate"
+              ngModel
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="unit">unit</label>
+            <input
+              type="number"
+              class="form-control"
+              id="unit"
+              name="unit"
+              [(ngModel)]="unit"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="expdate">expdate</label>
+            <input
+              type="date"
+              class="form-control"
+              id="expdate"
+              name="expdate"
+              [(ngModel)]="expdate"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="type">type</label>
+            <input
+              type="text"
+              class="form-control"
+              id="type"
+              name="type"
+              [(ngModel)]="type"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="price">price</label>
+            <input
+              type="text"
+              class="form-control"
+              id="price"
+              name="price"
+              [(ngModel)]="price"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="batchid">batchid</label>
+            <input
+              type="text"
+              class="form-control"
+              id="batchid"
+              name="batchid"
+              [(ngModel)]="batchid"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="totalLeafInOneBox">totalLeafInOneBox</label>
+            <input
+              type="number"
+              class="form-control"
+              id="totalLeafInOneBox"
+              name="totalLeafInOneBox"
+              [(ngModel)]="totalLeafInOneBox"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="numberOfItemInOneLeaf">numberOfItemInOneLeaf</label>
+            <input
+              type="number"
+              class="form-control"
+              id="numberOfItemInOneLeaf"
+              name="numberOfItemInOneLeaf"
+              [(ngModel)]="numberOfItemInOneLeaf"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="about">about</label>
+            <input
+              type="text"
+              class="form-control"
+              id="about"
+              name="about"
+              [(ngModel)]="about"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="sellerId">sellerId</label>
+            <input
+              type="number"
+              class="form-control"
+              id="sellerId"
+              name="sellerId"
+              [(ngModel)]="sellerId"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="image">Image</label>
+            <input
+              type="file"
+              class="form-control"
+              id="image"
+              name="image"
+              ngModel
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- delete page -->
+
+  <div class="container" *ngIf="status == 'delete'">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3 mt-5">
+        <h2 class="text-center mb-4">Delete Medicine</h2>
+        <div class="form-group1">
+          <label for="mfgdate">Medicine Number</label>
+          <input
+            type="number"
+            class="form-control"
+            id="id"
+            name="id"
+            [(ngModel)]="medicineId"
+            (keyup)="medicineDelete('set')"
+            required
+          />
+        </div>
+        <div class="card">
+          <div *ngIf="productName.length > 0">
+            <img class="img" src="" alt="Product Image" />
+            <div class="card-body">
+              <h5 class="card-title wrap">{{ productName }}</h5>
+              <h6 class="card-title">{{ type }}</h6>
+              <p class="card-text wrap">{{ about }}</p>
+              <p class="card-text">${{ price }}</p>
+              <p class="card-text">company{{ mfgcompany }}</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              (click)="medicineDelete('delete')"
+            >
+              Delete
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
+  <!-- create Account page -->
+  <div class="container" *ngIf="status == 'account'">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3 mt-5">
+        <h2 class="text-center mb-4">Create new Seller</h2>
+        <form #mData="ngForm" (ngSubmit)="accountCreate(mData.value)">
+          <div class="form-group">
+            <label for="name">Seller Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              name="name"
+              ngModel
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input
+              type="text"
+              class="form-control"
+              id="address"
+              name="address"
+              ngModel
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              ngModel
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="about">About</label>
+            <input
+              type="text"
+              class="form-control"
+              id="about"
+              name="about"
+              ngModel
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="gst">GST</label>
+            <input
+              type="text"
+              class="form-control"
+              id="gst"
+              name="gst"
+              ngModel
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input
+              type="text"
+              class="form-control"
+              id="phone"
+              name="phone"
+              ngModel
+              required
+            />
+          </div>
 
-
-
-
-<!-- create Account page -->
-<div class="container" *ngIf="status == 'account'">
-  <div class="row">
-    <div class="col-lg-6 offset-lg-3 mt-5">
-      <h2 class="text-center mb-4">Create new Seller</h2>
-      <form #mData="ngForm" (ngSubmit)="accountCreate(mData.value)">
-        <div class="form-group">
-          <label for="name">Seller Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="name"
-            name="name"
-            ngModel
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="address">Address</label>
-          <input
-            type="text"
-            class="form-control"
-            id="address"
-            name="address"
-            ngModel
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="email">email</label>
-          <input
-            type="email"
-            class="form-control"
-            id="email"
-            name="email"
-            ngModel
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="about">About</label>
-          <input
-            type="text"
-            class="form-control"
-            id="about"
-            name="about"
-            ngModel
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="gst">GST</label>
-          <input
-            type="text"
-            class="form-control"
-            id="gst"
-            name="gst"
-            ngModel
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="phone">Phone</label>
-          <input
-            type="text"
-            class="form-control"
-            id="phone"
-            name="phone"
-            ngModel
-            required
-          />
-        </div>
-
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary">Create Account</button>
-        </div>
-      </form>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">
+              Create Account
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>
-

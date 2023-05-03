@@ -5,6 +5,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { AdminComponent } from './admin/admin.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { CartComponent } from './cart/cart.component';
+import { ViewComponent } from './view/view.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     component:CartComponent,
     path:'cart'
+  },
+  {
+    component:ViewComponent,
+    path:'view'
   }
 ];
 

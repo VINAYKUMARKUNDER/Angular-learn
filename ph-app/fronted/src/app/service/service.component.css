@@ -1,3 +1,7 @@
+
+
+
+
 .sr
 {
 width: 80%;
@@ -140,6 +144,34 @@ img:hover {
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
+
+.search-container input{
+  width: 100%;
+}
+
+.search-container input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border-radius: 20px;
+  /* border: none; */
+}
+
+ /* .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: -28px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+} */
+
+ .search-container button:hover {
+  background: #ccc;
+}
+
 
 
 

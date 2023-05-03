@@ -33,6 +33,9 @@ export class AdminComponent implements OnInit {
   fetchAgen: Boolean = true;
   deleteId: number = 0;
   selectedFile: File | null = null;
+  alertData:any=[];
+  date:any=new Date().getTimezoneOffset();
+  alertStatus:Boolean=true;
 
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0];
@@ -40,7 +43,9 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllMedicine();
+    this.expireProduct();
     this.status = 'view';
+    console.log(this.date)
   }
 
   // view all medicine...
@@ -174,4 +179,23 @@ export class AdminComponent implements OnInit {
       },
     });
   }
+
+
+  expireProduct(){
+    this.http.get(`${this.URL}medicine/al/alert/`).subscribe({
+      next:res=>{
+        this.alertData=res;
+        console.log(res)
+      },
+      error:err=>alert('enternoll error...')
+    })
+
+  }
+
+
+  alertStatusHandler(){
+      this.alertStatus=false;
+  }
+
+
 }
