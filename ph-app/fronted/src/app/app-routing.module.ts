@@ -6,6 +6,7 @@ import { AdminComponent } from './admin/admin.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { CartComponent } from './cart/cart.component';
 import { ViewComponent } from './view/view.component';
+import { ContectComponent } from './contect/contect.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     component:ViewComponent,
     path:'view'
+  },
+  {
+    component:ContectComponent,
+    path:'contect'
   }
 ];
 

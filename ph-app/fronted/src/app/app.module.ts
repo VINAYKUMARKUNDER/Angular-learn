@@ -17,6 +17,8 @@ import { CustomerComponent } from './customer/customer.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './footer/footer.component';
+import { ContectComponent } from './contect/contect.component';
+
 
 
 
@@ -34,7 +36,8 @@ import { FooterComponent } from './footer/footer.component';
     CustomerComponent,
     SignUpComponent,
     LoginComponent,
-    FooterComponent
+    FooterComponent,
+    ContectComponent
   ],
   imports: [
     BrowserModule,

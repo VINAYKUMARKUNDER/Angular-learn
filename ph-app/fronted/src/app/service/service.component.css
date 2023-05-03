@@ -145,6 +145,10 @@ img:hover {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+.search{
+  margin: 0%;
+}
+
 .search-container input{
   width: 100%;
 }
@@ -172,6 +176,43 @@ img:hover {
   background: #ccc;
 }
 
+
+/* .main{
+  padding-top:80px;
+  padding-bottom: 20px;
+} */
+
+.card-temp{
+  height: 60vh;
+  margin: 25px;
+  padding: 25px;
+}
+
+h4,h6{
+  font-weight: 400;
+}
+
+.center{
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.center > img{
+  width: 100%;
+}
+
+
+.main-view{
+  width: 80%;
+  height: 400px;
+  background-color: azure;
+  border-radius: 8px;
+  display: flex;
+  gap: 20px;
+}
 
 
 

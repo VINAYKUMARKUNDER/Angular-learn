@@ -74,6 +74,10 @@ export class ServiceComponent implements OnInit {
   }
 
 
+  changeStatus(status:string){
+      this.status=status;
+  }
+
 
 
 

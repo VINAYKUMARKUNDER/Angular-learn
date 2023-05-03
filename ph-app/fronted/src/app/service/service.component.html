@@ -13,7 +13,7 @@
 
 <section class="search">
   <div class="container">
-    <div class="row center">
+    <div class="row center1">
       <div class="col-md-3"></div>
       <div class="col-md-7">
         <div class="search-container">
@@ -37,127 +37,58 @@
 
       <div class="col-md-2 type">
         <img
-          src="https://assets.pharmeasy.in/apothecary/images/medicine_ff.webp?dim=256x0"
+          src="https://assets.pharmeasy.in/apothecary/images/labtest_ff.webp?dim=720x0"
           alt=""
-          (click)="searchValue('medicine')"
+          (click)="searchValue('lab')"
         />
-        <h6>Medicine</h6>
+        <h6>Lab tests</h6>
       </div>
 
       <div class="col-md-2 type">
         <img
-          src="https://assets.pharmeasy.in/apothecary/images/medicine_ff.webp?dim=256x0"
+          src="https://assets.pharmeasy.in/apothecary/images/healthcare_ff.webp?dim=720x0"
           alt=""
-          (click)="searchValue('medicine')"
+          (click)="searchValue('healthcare')"
         />
-        <h6>Medicine</h6>
+        <h6>Halthcare</h6>
       </div>
 
       <div class="col-md-2 type">
         <img
-          src="https://assets.pharmeasy.in/apothecary/images/medicine_ff.webp?dim=256x0"
+          src="https://assets.pharmeasy.in/apothecary/images/health_blogs_ff.webp?dim=720x0"
           alt=""
-          (click)="searchValue('medicine')"
+          (click)="searchValue('blogs')"
         />
-        <h6>Medicine</h6>
+        <h6>Health Blogs</h6>
       </div>
 
       <div class="col-md-2 type">
         <img
-          src="https://assets.pharmeasy.in/apothecary/images/medicine_ff.webp?dim=256x0"
+          src="https://assets.pharmeasy.in/apothecary/images/plus_ff.webp?dim=720x0"
           alt=""
-          (click)="searchValue('medicine')"
+          (click)="searchValue('plus')"
         />
-        <h6>Medicine</h6>
+        <h6>PLUS</h6>
       </div>
 
       <div class="col-md-2 type">
         <img
-          src="https://assets.pharmeasy.in/apothecary/images/medicine_ff.webp?dim=256x0"
+          src="https://assets.pharmeasy.in/apothecary/images/value_store.png?dim=720x0"
           alt=""
-          (click)="searchValue('medicine')"
+          (click)="searchValue('store')"
         />
-        <h6 >Medicine</h6>
+        <h6 >Value Store</h6>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Services -->
-<!--
-<section class="services">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="service-item">
-          <i class="fas fa-pills service-icon"></i>
-          <h2>Medication Dispensing</h2>
-          <p>
-            We dispense prescription medications and over-the-counter products
-            to help you manage your health.
-          </p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="service-item">
-          <i class="fas fa-file-prescription service-icon"></i>
-          <h2>Prescription Transfers</h2>
-          <p>
-            If you have a prescription with another pharmacy, we can help
-            transfer it to our location for easy refills and management.
-          </p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="service-item">
-          <i class="fas fa-flask service-icon"></i>
-          <h2>Immunizations</h2>
-          <p>
-            We offer a variety of immunizations to help protect you and your
-            family from preventable diseases.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-4">
-        <div class="service-item">
-          <i class="fas fa-heartbeat service-icon"></i>
-          <h2>Health Screenings</h2>
-          <p>
-            We offer health screenings and testing services to help you monitor
-            and maintain your health.
-          </p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="service-item">
-          <i class="fas fa-first-aid service-icon"></i>
-          <h2>First Aid Supplies</h2>
-          <p>
-            We carry a range of first aid supplies to help you treat minor
-            injuries and ailments at home.
-          </p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="service-item">
-          <i class="fas fa-hospital-alt service-icon"></i>
-          <h2>Specialty Pharmacy</h2>
-          <p>
-            We provide specialty pharmacy services for complex medical
-            conditions that require specialized treatment.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
+
 
 <!-- product -->
 
 <section class="product" *ngIf="status=='view'" >
-  <div class="container">
+  <div class="container" *ngIf="allMedicine.length>=1">
     <div id="main">
       <div *ngFor="let product of allMedicine" class="product">
         <div
@@ -172,7 +103,8 @@
               <p class="card-text">Company: {{ product.mfgcompany }}</p>
               <button
                 class="btn btn-primary"
-                routerLink="/view"
+
+                (click)="changeStatus('view-details')"
                 >
                 View
               </button>
@@ -186,7 +118,29 @@
       </div>
     </div>
   </div>
+
+  <ng-container *ngIf="allMedicine.length === 0">
+    <div class="container main">
+      <div class="card-temp">
+
+      </div>
+
+      <div class="center">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSxaMI-nZzE9tMBP3DBUPPoTKvjAXKCd5azA&usqp=CAU"
+          alt=""
+        />
+        <h4>Your product not found...</h4>
+
+
+        <button class="btn btn-primary" routerLink="/service">View Medicine</button>
+      </div>
+    </div>
+  </ng-container>
 </section>
+
+
+
 
 
 <section>
@@ -277,3 +231,23 @@
   </div>
 </div>
 
+
+
+
+<section *ngIf="status==='view-details'">
+  <div class="main-view">
+    <div class="img-section">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIgA23yukpFgMqKzVE_EKF36O2W_LlFkzu5g&usqp=CAU" alt="">
+    </div>
+
+    <div class="detail-section">
+      <button type="close">X</button>
+      <h3>Product Name</h3>
+      <h6>Description</h6>
+      <p>Price</p>
+      <p>Quintity</p>
+      <button type="button">Add To cart</button>
+    </div>
+  </div>
+
+</section>

@@ -2,15 +2,40 @@
 .btn{
   margin: 3px;
 }
+
+.left-side{
+  width: 100%;
+
+  text-align: center;
+}
+
+.btn1{
+  background:none;
+  color: black;
+  border: none;
+  margin: 8px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 17px;
+  width: 100px;
+  border-radius: 20px;
+}
 .btn:hover{
   background-color: red;
+}
+
+.btn1:hover{
+  background-color: red;
+}
+
+.view :nth-child(0){
+  background-color: pink;
 }
 
 .view{
   margin-top: 5px 20px 5px 0px;
 
   display: grid;
-  grid-template-columns: 10% 85%
+  grid-template-columns: 15% 85%
 }
 /*
 .row button{
@@ -49,4 +74,23 @@
   font-size: 20px;
   margin: 0;
   font-weight: 600;
+}
+
+
+.form-disign{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 10px;
+}
+
+
+.comming-soon{
+  text-align: center;
+  margin: 14px 0 0 40%;
+}
+
+.heading{
+  text-align: center;
+  margin: 10px;
+  color: cadetblue;
 }

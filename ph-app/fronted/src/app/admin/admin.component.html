@@ -9,26 +9,26 @@
 <div class="view">
 
 
-  <div class="row">
+  <div class="row left-side">
     <div class="col-md-4">
-      <button class="btn btn-primary" (click)="clickStatusView('create')">
+      <button class="btn1 btn-primary" (click)="clickStatusView('create')">
         Create
       </button>
-      <button class="btn btn-primary" (click)="clickStatusView('view')">
+      <button class="btn1 btn-primary" (click)="clickStatusView('view')">
         View
       </button>
-      <button class="btn btn-primary" (click)="clickStatusView('update')">
+      <button class="btn1 btn-primary" (click)="clickStatusView('update')">
         Update
       </button>
-      <button class="btn btn-primary" (click)="clickStatusView('delete')">
+      <button class="btn1 btn-primary" (click)="clickStatusView('delete')">
         Delete
       </button>
 
-      <button class="btn btn-primary" (click)="clickStatusView('account')">
+      <button class="btn1 btn-primary" (click)="clickStatusView('account')">
         Create Account
       </button>
 
-      <button class="btn btn-primary" (click)="clickStatusView('alert')">
+      <button class="btn1 btn-primary" (click)="clickStatusView('alert')">
         expire product
       </button>
     </div>
@@ -37,8 +37,11 @@
   <!-- view page -->
   <section *ngIf="status == 'view'">
     <div class="container">
+      <h1 class="heading">Products</h1>
       <div id="main">
+
         <div *ngFor="let product of allMedicine" class="product">
+
           <div class="card">
             <div>
               <img class="img" src="{{ product.image }}" alt="Product Image" />
@@ -54,7 +57,7 @@
                   Update
                 </button>
                 <button
-                  class="btn btn1 btn-success"
+                  class="btn btn-success"
                   (click)="delete(product.id)"
                 >
                   Delete
@@ -63,7 +66,9 @@
             </div>
           </div>
         </div>
+
       </div>
+      <img class="comming-soon" src="https://media.tenor.com/SRSco4res10AAAAj/coming-soon.gif" alt="">
     </div>
   </section>
 
@@ -108,7 +113,7 @@
         <form
           #mData="ngForm"
           (ngSubmit)="medicineCreate(mData.value)"
-          class="grouping"
+          class="form-disign"
         >
           <div class="form-group">
             <label for="name">product Name</label>
@@ -274,7 +279,7 @@
             required
           />
         </div>
-        <form #uData="ngForm" (ngSubmit)="medicineUpdate(uData.value)">
+        <form #uData="ngForm" (ngSubmit)="medicineUpdate(uData.value)" class="form-disign">
           <div class="form-group">
             <label for="name">product Name</label>
             <input
@@ -310,17 +315,6 @@
             />
           </div>
           <div class="form-group">
-            <label for="unit">unit</label>
-            <input
-              type="number"
-              class="form-control"
-              id="unit"
-              name="unit"
-              [(ngModel)]="unit"
-              required
-            />
-          </div>
-          <div class="form-group">
             <label for="expdate">expdate</label>
             <input
               type="date"
@@ -331,6 +325,18 @@
               required
             />
           </div>
+          <div class="form-group">
+            <label for="unit">unit</label>
+            <input
+              type="number"
+              class="form-control"
+              id="unit"
+              name="unit"
+              [(ngModel)]="unit"
+              required
+            />
+          </div>
+
           <div class="form-group">
             <label for="type">type</label>
             <input
@@ -478,7 +484,7 @@
     <div class="row">
       <div class="col-lg-6 offset-lg-3 mt-5">
         <h2 class="text-center mb-4">Create new Seller</h2>
-        <form #mData="ngForm" (ngSubmit)="accountCreate(mData.value)">
+        <form #mData="ngForm" (ngSubmit)="accountCreate(mData.value)" class="form-disign">
           <div class="form-group">
             <label for="name">Seller Name</label>
             <input
@@ -486,6 +492,7 @@
               class="form-control"
               id="name"
               name="name"
+              placeholder="Enter name"
               ngModel
               required
             />
@@ -497,17 +504,19 @@
               class="form-control"
               id="address"
               name="address"
+              placeholder="Address"
               ngModel
               required
             />
           </div>
           <div class="form-group">
-            <label for="email">email</label>
+            <label for="email">Email</label>
             <input
               type="email"
               class="form-control"
               id="email"
               name="email"
+              placeholder="Email"
               ngModel
               required
             />
@@ -519,6 +528,7 @@
               class="form-control"
               id="about"
               name="about"
+              placeholder="About"
               ngModel
               required
             />
@@ -530,6 +540,7 @@
               class="form-control"
               id="gst"
               name="gst"
+              placeholder="GST Number"
               ngModel
               required
             />
@@ -541,6 +552,7 @@
               class="form-control"
               id="phone"
               name="phone"
+              placeholder="Mobile number"
               ngModel
               required
             />
