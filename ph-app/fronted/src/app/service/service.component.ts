@@ -14,9 +14,11 @@ export class ServiceComponent implements OnInit {
 
   allMedicine: any = [];
   allMedicineSearchHelps: any = [];
+  popup:any=''
 
   ngOnInit(): void {
     this.getAllMedicine();
+    this.popup= document.getElementById('popup');
   }
 
   URL: string = 'http://localhost:3000/api/v1/';
@@ -61,14 +63,28 @@ export class ServiceComponent implements OnInit {
 
   addProductInCart(product:any){
     let res= this.cartService.addToCart(product);
-    if(res)alert('product added successfully...');
-    else alert('product is already added...')
+    // if(res)alert('product added successfully...');
+    // else alert('product is already added...')
   }
 
 
 
   viewDetails(product:{}){
     console.log(product)
+  }
+
+
+
+
+
+
+  openPopUp=()=>{
+    // console.log(this.popup)
+    this.popup.classList.add("popup-open")
+  }
+
+  closePopUp=()=>{
+    this.popup.classList.remove("popup-open")
   }
 
 

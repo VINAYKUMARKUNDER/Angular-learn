@@ -179,7 +179,7 @@
                 >
                 View
               </button>
-              <button class="btn btn1 btn-success" (click)="addProductInCart(product)" >
+              <button class="btn btn1 btn-success" (click)="addProductInCart(product)" (click)="openPopUp()" >
                 Add Cart
               </button>
 
@@ -187,6 +187,18 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <div class="container">
+    <div class="popup" id="popup">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIgA23yukpFgMqKzVE_EKF36O2W_LlFkzu5g&usqp=CAU" alt="">
+      <h2>thank you.</h2>
+      <p>Your details has been successfully submitted. Thanks.</p>
+      <button type="button" (click)="closePopUp()">Ok</button>
     </div>
   </div>
 </section>
