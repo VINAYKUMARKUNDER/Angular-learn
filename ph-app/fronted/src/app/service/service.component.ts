@@ -15,10 +15,14 @@ export class ServiceComponent implements OnInit {
   allMedicine: any = [];
   allMedicineSearchHelps: any = [];
   popup:any=''
+  viewProduct:any='';
+  viewPopup:any='';
 
   ngOnInit(): void {
     this.getAllMedicine();
     this.popup= document.getElementById('popup');
+    this.viewPopup=document.getElementById('view-pop');
+    console.log(this.viewPopup)
   }
 
   URL: string = 'http://localhost:3000/api/v1/';
@@ -27,7 +31,6 @@ export class ServiceComponent implements OnInit {
     this.http.get(`${this.URL}medicine/`).subscribe((res) => {
       this.allMedicine = res;
       this.allMedicineSearchHelps = res;
-      console.log(res)
     });
 
   }
@@ -35,10 +38,8 @@ export class ServiceComponent implements OnInit {
   status: string = 'view';
 
   medicineCreate(data: {}) {
-    // console.log(data);
 
     this.http.post(`${this.URL}medicine/`, data).subscribe((res) => {
-      console.log(res);
       this.status = 'view'
     })
   }
@@ -47,11 +48,9 @@ export class ServiceComponent implements OnInit {
   filteredItems: string[] = [];
 
   searchList() {
-    // console.log(this.searchTerm)
     const allItem = this.filteredItems = this.allMedicineSearchHelps.filter((medicine: any) =>
       medicine.type.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
-    // console.log(allItem)
     this.allMedicine = allItem;
   }
 
@@ -62,15 +61,22 @@ export class ServiceComponent implements OnInit {
 
 
   addProductInCart(product:any){
-    let res= this.cartService.addToCart(product);
-    // if(res)alert('product added successfully...');
-    // else alert('product is already added...')
+    // let res= this.cartService.addToCart(product);
+    this.http.post(`${this.URL}cart/`,product).subscribe({
+      next:res=>{
+        alert(res)
+      console.log(res)
+    },
+      error:err=> {alert(err)
+      console.log(err)}
+    })
   }
 
 
 
   viewDetails(product:{}){
-    console.log(product)
+    this.viewProduct=product;
+    this.status = 'view-details'
   }
 
 
@@ -83,13 +89,25 @@ export class ServiceComponent implements OnInit {
 
 
   openPopUp=()=>{
-    // console.log(this.popup)
+
     this.popup.classList.add("popup-open")
   }
 
   closePopUp=()=>{
     this.popup.classList.remove("popup-open")
   }
+
+
+  openViewPopUp=()=>{
+    console.log(this.viewPopup)
+    this.viewPopup.classList.add("popup-open")
+  }
+
+  closeViewPopUp=()=>{
+    this.viewPopup.classList.remove("popup-open")
+  }
+
+
 
 
 }

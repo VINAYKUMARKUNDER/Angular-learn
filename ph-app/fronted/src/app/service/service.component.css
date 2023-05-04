@@ -106,15 +106,16 @@ img:hover {
   padding: 0 30px 30px;
   transform: translate(-50%, -50%) scale(0.1);
   /* color: #fff; */
-  visibility: hidden;
+  /* visibility: hidden; */
   transition:  transform 0.4s, top 0.4s;
   border-radius: 10px;
 }
 
 .popup-open{
   visibility: visible;
-  transform: translate(-50%,50%);
+  transform: translate(-50%,50%) scale(1);
   top: 40%;
+  background-color: red;
 }
 
 .popup img{
@@ -142,6 +143,45 @@ img:hover {
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
+
+.main-view{
+  /* width: 600px;
+  background-color: red;
+  border-radius: 8px;
+  display: flex;
+  gap: 20px;
+  background: rgb(218, 207, 207);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  padding: 0 30px 30px;
+ 
+  visibility: hidden;
+  transition:  transform 0.4s, top 0.4s; */
+
+
+  width: 400px;
+  background: rgb(218, 207, 207);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%,50%);
+  text-align: center;
+  padding: 0 30px 30px;
+  transform: translate(-50%, -50%) scale(0.1);
+  /* color: #fff; */
+  /* visibility: hidden; */
+  transition:  transform 0.4s, top 0.4s;
+  border-radius: 10px;
+}
+
+
+
+
+
+
 
 .search{
   margin: 0%;
@@ -203,17 +243,13 @@ h4,h6{
 }
 
 
-.main-view{
-  width: 80%;
-  height: 400px;
-  background-color: azure;
-  border-radius: 8px;
-  display: flex;
-  gap: 20px;
-}
 
 .comming-soon{
   text-align: center;
   margin: 14px 0 0 80%;
 }
+
+
+
+
 

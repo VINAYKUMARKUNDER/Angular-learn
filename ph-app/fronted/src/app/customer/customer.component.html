@@ -67,7 +67,7 @@
         </div>
 
         <div class="form-group">
-          <button type="submit" class="btn btn-primary">
+          <button type="submit" class="btn btn-primary" (click)="openPopUp()">
             Create Account
           </button>
         </div>
@@ -79,14 +79,25 @@
 
 <!-- alert massege -->
 <section>
-  <div class="container">
+  <div class="container" >
     <div class="popup" id="popup">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIgA23yukpFgMqKzVE_EKF36O2W_LlFkzu5g&usqp=CAU" alt="">
-      <h2>thank you.</h2>
-      <p>Your details has been successfully submitted. Thanks.</p>
+      <div *ngIf="status" >
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIgA23yukpFgMqKzVE_EKF36O2W_LlFkzu5g&usqp=CAU" alt="">
+        <h2>thank you.</h2>
+      </div>
+
+      <div *ngIf="!status">
+        <img *ngIf="!status"  src="http://www.setra.com/hubfs/Sajni/crc_error.jpg" alt="">
+        <h2>OOPs!</h2>
+      </div>
+
+
+      <p>{{massege}}</p>
       <button type="button" (click)="closePopUp()">Ok</button>
     </div>
   </div>
+
+
 </section>
 
 

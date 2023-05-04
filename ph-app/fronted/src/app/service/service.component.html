@@ -103,8 +103,9 @@
               <p class="card-text">Company: {{ product.mfgcompany }}</p>
               <button
                 class="btn btn-primary"
+                (click)=" openViewPopUp()"
+                (click)="viewDetails(product)"
 
-                (click)="changeStatus('view-details')"
                 >
                 View
               </button>
@@ -235,17 +236,17 @@
 
 
 
-<section *ngIf="status==='view-details'">
-  <div class="main-view">
+<section >
+  <div class="main-view" id="view-pop">
     <div class="img-section">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIgA23yukpFgMqKzVE_EKF36O2W_LlFkzu5g&usqp=CAU" alt="">
     </div>
 
     <div class="detail-section">
-      <button type="close">X</button>
-      <h3>Product Name</h3>
-      <h6>Description</h6>
-      <p>Price</p>
+      <button type="close" (click)=" closeViewPopUp()">X</button>
+      <h3>{{viewProduct.productName}}</h3>
+      <h6>Description: {{viewProduct.about}}</h6>
+      <p>Price: {{viewProduct.price}}</p>
       <p>Quintity</p>
       <button type="button">Add To cart</button>
     </div>
