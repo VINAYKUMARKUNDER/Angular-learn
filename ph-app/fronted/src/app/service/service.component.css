@@ -82,13 +82,9 @@ img:hover {
   transform: scale(1.1);
 }
 
-.wishlist{
-  border: none;
-}
 
-.wistlist-img{
-  width: 30px;
-}
+
+
 
 .wrap{
   white-space: nowrap;

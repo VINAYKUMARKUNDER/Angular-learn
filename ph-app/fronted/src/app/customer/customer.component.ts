@@ -11,9 +11,10 @@ export class CustomerComponent implements OnInit{
   constructor(private http:HttpClient){}
   URL: string = 'http://localhost:3000/api/v1/';
   massege:string='';
+  popup:any=''
 
   ngOnInit(): void {
-
+    this.popup=document.getElementById('popup');
   }
 
 
@@ -25,6 +26,17 @@ export class CustomerComponent implements OnInit{
         else this.massege=('Internal server error..');
       },
     });
+  }
+
+
+
+  openPopUp=()=>{
+    // console.log(this.popup)
+    this.popup.classList.add("popup-open")
+  }
+
+  closePopUp=()=>{
+    this.popup.classList.remove("popup-open")
   }
 
 }
