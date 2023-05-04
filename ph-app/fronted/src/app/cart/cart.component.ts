@@ -11,16 +11,18 @@ export class CartComponent implements OnInit{
 
   constructor(private cartService: CartServiceService, private http:HttpClient){}
 
-   products : any= [];
+  products : any= [];
   productsLen: any=[];
   status:Boolean=false;
+  customer:Object={};
 
   public grandTotal : number = 0;
   URL: string = 'http://localhost:3000/api/v1/';
 
   ngOnInit(): void{
+   this.getCustomer();
     this.getAllCartData();
-    console.log(this.products)
+    // console.log(this.customer)
     // try {
     //   this.products=JSON.parse(localStorage.getItem('products') || '');
     // } catch (error) {}
@@ -99,7 +101,14 @@ export class CartComponent implements OnInit{
 
 
   checkoutProduct(){
-    localStorage.setItem('checkout', JSON.stringify(this.productsLen));
+    localStorage.setItem('checkout', JSON.stringify(this.products));
+  }
+
+
+  getCustomer(){
+    this.http.get(`${this.URL}customer/1`).subscribe({
+      next:res=>this.customer=res,
+    })
   }
 
 }

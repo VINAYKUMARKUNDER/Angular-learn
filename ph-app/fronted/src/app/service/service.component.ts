@@ -25,8 +25,8 @@ export class ServiceComponent implements OnInit {
     console.log(this.viewPopup)
   }
 
-  URL: string = 'http://localhost:3000/api/v1/';
 
+ URL: string = 'http://localhost:3000/api/v1/';
   getAllMedicine() {
     this.http.get(`${this.URL}medicine/`).subscribe((res) => {
       this.allMedicine = res;

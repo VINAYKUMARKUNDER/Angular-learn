@@ -102,10 +102,23 @@ let genrateTable = () => {
     );
 };
 
+g=()=>{
+  conn.query(`
+  create table Customer_Order_History (
+    orderId integer not null  AUTO_INCREMENT, 
+    customerId bigint, 
+    medicineId bigint UNIQUE, 
+    primary key (orderId),
+    foreign key (customerId) references customers (id),
+    foreign key (medicineId) references medicine (id)
+  )`
+  );
+}
+
 
 
 
 // genrateTable();
-
+// g();
 
 module.exports = conn;
