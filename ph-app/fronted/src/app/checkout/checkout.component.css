@@ -1,0 +1,96 @@
+
+
+.payment-box {
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 20px;
+  max-width: 400px;
+}
+
+.payment-box h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.payment-box form {
+  display: grid;
+  grid-gap: 10px;
+}
+
+.payment-box label {
+  font-size: 18px;
+}
+
+.payment-box input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.payment-box button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.payment-box button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+
+.address-box {
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 20px;
+  max-width: 400px;
+}
+
+.address-box h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.address-box form {
+  display: grid;
+  grid-gap: 10px;
+}
+
+.address-box label {
+  font-size: 18px;
+}
+
+.address-box input[type="text"],
+.address-box textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.address-box button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.address-box button[type="submit"]:hover {
+  background-color: #45a049;
+}
+

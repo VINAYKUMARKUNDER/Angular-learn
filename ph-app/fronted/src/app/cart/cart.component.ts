@@ -11,7 +11,8 @@ export class CartComponent implements OnInit{
 
   constructor(private cartService: CartServiceService, private http:HttpClient){}
 
-  public products : any= [];
+   products : any= [];
+  productsLen: any=[];
   status:Boolean=false;
 
   public grandTotal : number = 0;
@@ -19,31 +20,33 @@ export class CartComponent implements OnInit{
 
   ngOnInit(): void{
     this.getAllCartData();
-    try {
-      this.products=JSON.parse(localStorage.getItem('products') || '');
-    } catch (error) {}
-        console.log(this.products)
+    console.log(this.products)
+    // try {
+    //   this.products=JSON.parse(localStorage.getItem('products') || '');
+    // } catch (error) {}
+    //     console.log(this.products)
     }
 
 
-      getAllCartData(){
-        this.http.get(`${this.URL}cart/1`).subscribe({
-          next:res=>{
-            console.log(res)
-            this.products=res;
-          },
-          error:err=> console.log(err)
-        })
+    getAllCartData(){
+      this.http.get(`${this.URL}cart/${1}`).subscribe({
+        next:res=>{
+         this.products=res;
+         this.productsLen= this.products[1];
+        }
+      });
       }
 
 
 
   removeItem(product:any){
-    this.cartService.removeCartItem(product);
+    // this.cartService.removeCartItem(product);
+
   }
 
   removeAll(){
-    this.cartService.removeAll();
+    // this.cartService.removeAll();
+    console.log(this.products)
   }
 
   total:number=0;
@@ -51,8 +54,8 @@ export class CartComponent implements OnInit{
     // this.total =this.cartService.getTotalPrice();
     let totl=0;
 
-    for(let i=0;i<this.products.length;i++){
-      totl+=this.products[i].total;
+    for(let i=0;i<this.productsLen.length;i++){
+      totl+=this.productsLen[i].price;
     }
     this.total=totl;
     localStorage.setItem('total',JSON.stringify(totl*80));
@@ -92,6 +95,11 @@ export class CartComponent implements OnInit{
 
       }
     })
+  }
+
+
+  checkoutProduct(){
+    localStorage.setItem('checkout', JSON.stringify(this.productsLen));
   }
 
 }

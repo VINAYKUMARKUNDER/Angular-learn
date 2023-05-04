@@ -1,4 +1,4 @@
-<ng-container *ngIf="products.length !==0">
+<ng-container *ngIf="productsLen.length !==0">
   <div class="container  main">
     <div class="card-table">
       <div class="card-product">
@@ -18,12 +18,12 @@
 
           <tbody>
 
-            <tr *ngFor="let item of products; let i=index"  >
+            <tr *ngFor="let item of productsLen; let i=index"  >
               <td>{{i+1}}</td>
               <td>{{item.productName}}</td>
               <td><img src="{{item.image}}" alt="">  </td>
               <td>{{item.about}}</td>
-              <td style="width:12%">{{(item.price).toFixed(2)}}</td>
+              <td style="width:12%">{{(item.price)}}</td>
               <td style="width:12%">
                 <button class="btn btn-primary" (click)="decriment(item)">-</button>
 
@@ -31,7 +31,7 @@
                 <button class="btn btn-primary" (click)="incriment(item)">+</button>
 
               </td>
-              <td>{{(item.total).toFixed(2)}}</td>
+              <td>{{(item.total)}}</td>
 
               <td style="width:14%">
                 <button (click)="removeItem(item)" class="btn btn-danger">Delete</button>
@@ -43,7 +43,7 @@
               <td colspan="4"></td>
               <td><button class="btn btn-danger" (click)="removeAll()">Empty Cart</button></td>
               <td><button routerLink="/products" class="btn btn-primary">Shop More</button></td>
-              <td><button class="btn btn-success" routerLink="/checkout">Checkout</button></td>
+              <td><button class="btn btn-success" routerLink="/checkout" (click)="checkoutProduct()">Checkout</button></td>
 
               <td (click)="getTotal()"><h4>Total : ${{(getTotal()).toFixed(2)}}</h4></td>
             </tr>
@@ -55,7 +55,7 @@
   </div>
 </ng-container>
 
-<ng-container *ngIf="products.length === 0">
+<ng-container *ngIf="productsLen.length === 0">
   <div class="container main">
     <div class="card">
       <h5 class="card-title">My Cart</h5>

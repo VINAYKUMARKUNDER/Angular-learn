@@ -18,6 +18,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContectComponent } from './contect/contect.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 
@@ -37,7 +38,8 @@ import { ContectComponent } from './contect/contect.component';
     SignUpComponent,
     LoginComponent,
     FooterComponent,
-    ContectComponent
+    ContectComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

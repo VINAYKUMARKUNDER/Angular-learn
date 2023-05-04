@@ -23,10 +23,21 @@ router.get('/', async (req,res)=>{
 // get by customer id all card data...
 router.get('/:customerId', async (req,res)=>{
     try {
-        const data = await db.query(`SELECT * FROM cart WHERE customerId = ${req.params.customerId}`,(err, result)=>{
+
+        const all=[];
+        const data = await db.query(`SELECT * FROM customers WHERE id = ${req.params.customerId}`,(err, result)=>{
 
         });
-        return res.status(200).json(data);
+
+        const medicineData = await db.query(`select medicine.* from cart left join medicine  ON cart.medicineId=medicine.id AND cart.customerID=${req.params.customerId}`, (err, result)=>{
+
+        })
+
+        all.push(data[0]);
+        all.push(medicineData[0]);
+        // console.log(all)
+
+        return res.status(200).json(all);
     } catch (error) {
         return res.status(500).json(err="server error...!!")
     }
@@ -44,6 +55,9 @@ router.post('/', async (req, res)=>{
         return res.json(500).json(err="internal server error...")
     }
 });
+
+
+
 
 module.exports = router;
 

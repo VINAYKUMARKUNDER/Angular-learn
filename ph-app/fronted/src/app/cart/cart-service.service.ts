@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,7 +6,8 @@ import { Injectable } from '@angular/core';
 })
 export class CartServiceService {
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
+  URL: string = 'http://localhost:3000/api/v1/';
 
   ngOnInit(): void {
     try {
@@ -100,4 +102,20 @@ export class CartServiceService {
     localStorage.removeItem("products")
     window.location.reload();
   }
+
+
+
+  getCustomerById(id:Number){
+    let dbCartItem;
+    this.http.get(`${this.URL}cart/${id}`).subscribe({
+        next:res=>{
+         return res
+          dbCartItem= res;
+        }
+      });
+      console.log(dbCartItem)
+
+      return dbCartItem;
+  }
+
 }
