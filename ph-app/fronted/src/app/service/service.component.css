@@ -115,7 +115,7 @@ img:hover {
   visibility: visible;
   transform: translate(-50%,50%) scale(1);
   top: 40%;
-  background-color: red;
+  background-color: gray;
 }
 
 .popup img{
@@ -157,7 +157,7 @@ img:hover {
   transform: translate(-50%,-50%);
   text-align: center;
   padding: 0 30px 30px;
- 
+
   visibility: hidden;
   transition:  transform 0.4s, top 0.4s; */
 

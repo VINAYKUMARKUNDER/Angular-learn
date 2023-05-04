@@ -13,8 +13,10 @@ export class CustomerComponent implements OnInit{
   massege:string='';
   popup:any='';
   status:Boolean=true;
+  products:any=[];
 
   ngOnInit(): void {
+
     this.popup=document.getElementById('popup');
   }
 
@@ -42,6 +44,19 @@ export class CustomerComponent implements OnInit{
 
   closePopUp=()=>{
     this.popup.classList.remove("popup-open")
+  }
+
+  getAllOrder(){
+    this.http.get(`${this.URL}order/1`).subscribe({
+      next:res=>{
+        this.products=res
+      },
+    })
+  }
+
+
+  cancelOrder(product:any){
+
   }
 
 }

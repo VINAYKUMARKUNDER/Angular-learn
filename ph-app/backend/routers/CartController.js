@@ -56,6 +56,19 @@ router.post('/', async (req, res)=>{
     }
 });
 
+// delete all data from database 
+router.delete('/',async (req,res)=>{
+    try {
+        const data= await db.query(`truncate cart`,(err,result)=>{
+
+        })
+        return res.status(200).json(msg="cart data deleted successfully...")
+    } catch (error) {
+        return res.status(500).json(msg="Internal server error...!")
+    }
+   
+})
+
 
 
 

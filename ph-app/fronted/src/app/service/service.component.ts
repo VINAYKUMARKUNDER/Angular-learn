@@ -70,11 +70,11 @@ export class ServiceComponent implements OnInit {
     }
     this.http.post(`${this.URL}cart/`,data).subscribe({
       next:res=>{
-        alert(res)
-      console.log(res)
+
+
     },
-      error:err=> {alert(err)
-      console.log(err)}
+      error:err=>{}
+
     })
   }
 

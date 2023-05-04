@@ -1,4 +1,7 @@
 
+
+
+
 <div class="container">
   <div class="row">
     <div class="col-lg-6 offset-lg-3 mt-5">
@@ -103,7 +106,27 @@
 
 
 <section>
-  
+  <button (click)="getAllOrder()">view Order</button>
+  <div id="main">
+    <div *ngFor="let product of products[0]" class="product">
+      <div
+        class="card">
+
+          <img class="img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmIGvZj6DvHD78FQ8ppcBFO3O9UJActAvuXQ&usqp=CAU" alt="Product Image" />
+          <div class="card-body">
+            <h5 class="card-title wrap">Type: {{ product.type }}</h5>
+            <h6 class="card-title">Product Name: {{ product.productName }}</h6>
+            <p class="card-text wrap">Description: {{ product.about }}</p>
+            <p class="card-text">Price: {{ product.price }} Ru.</p>
+            <p class="card-text">Company: {{ product.mfgcompany }}</p>
+
+            <button class="btn btn-primary">Cancel Order</button>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
 </section>
 
 

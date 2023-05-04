@@ -29,9 +29,16 @@ export class CheckoutComponent implements OnInit{
 
       // console.log(this.products[0][0].id)
       this.http.post(`${this.URL}order/`,data).subscribe({
-        next:res=>console.log(res)
+        next:res=>console.log(res),
+        error:err=>alert('dublicate entry...')
       })
      }
+
+     this.http.delete(`${this.URL}cart/`).subscribe({
+      next:res=>{
+        alert(res)
+      }
+     })
   }
 
 }
