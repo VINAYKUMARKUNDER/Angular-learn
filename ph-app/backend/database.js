@@ -92,9 +92,9 @@ let genrateTable = () => {
 
     conn.query(`
     create table cart (
-      cartId integer not null, 
+      cartId integer not null  AUTO_INCREMENT, 
       customerId bigint, 
-      medicinesId bigint, 
+      medicineId bigint UNIQUE, 
       primary key (cartId),
       foreign key (customerId) references customers (id),
       foreign key (medicinesId) references medicine (id)
@@ -103,6 +103,9 @@ let genrateTable = () => {
 };
 
 
+
+
 // genrateTable();
+
 
 module.exports = conn;

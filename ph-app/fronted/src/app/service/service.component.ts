@@ -60,9 +60,15 @@ export class ServiceComponent implements OnInit {
   }
 
 
-  addProductInCart(product:any){
+  addProductInCart(id:Number){
+    console.log(id)
+
     // let res= this.cartService.addToCart(product);
-    this.http.post(`${this.URL}cart/`,product).subscribe({
+    let data ={
+      customerId: 1,
+      medicineId:id
+    }
+    this.http.post(`${this.URL}cart/`,data).subscribe({
       next:res=>{
         alert(res)
       console.log(res)
@@ -95,6 +101,7 @@ export class ServiceComponent implements OnInit {
 
   closePopUp=()=>{
     this.popup.classList.remove("popup-open")
+    this.status='view'
   }
 
 

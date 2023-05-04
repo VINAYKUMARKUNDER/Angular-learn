@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartServiceService } from './cart-service.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-cart',
@@ -8,14 +9,16 @@ import { CartServiceService } from './cart-service.service';
 })
 export class CartComponent implements OnInit{
 
-  constructor(private cartService: CartServiceService){}
+  constructor(private cartService: CartServiceService, private http:HttpClient){}
 
   public products : any= [];
   status:Boolean=false;
 
   public grandTotal : number = 0;
+  URL: string = 'http://localhost:3000/api/v1/';
 
   ngOnInit(): void{
+    this.getAllCartData();
     try {
       this.products=JSON.parse(localStorage.getItem('products') || '');
     } catch (error) {}
@@ -23,7 +26,15 @@ export class CartComponent implements OnInit{
     }
 
 
-
+      getAllCartData(){
+        this.http.get(`${this.URL}cart/1`).subscribe({
+          next:res=>{
+            console.log(res)
+            this.products=res;
+          },
+          error:err=> console.log(err)
+        })
+      }
 
 
 

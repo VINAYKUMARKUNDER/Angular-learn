@@ -4,21 +4,30 @@ const db = require("../database");
 const Cart = db.define(
   "cart",
   {
-    id: {
+    cartId: {
       type: DataTypes.BIGINT,
       autoIncrement: true,
       primaryKey: true,
     }
   },
   {
-    tableName: "customers",
+    tableName: "cart",
     timestamps: false,
   }
 );
 
 const Customer = require("./CustomerModel");
 const Medicine = require("./MedicineModel");
-Cart.belongsTo(Customer);
-Cart.belongsTo(Medicine);
 
-module.exports = Customer;
+
+Cart.belongsTo(Medicine, {
+  foreignKey: { allowNull: false },
+  onDelete: "CASCADE",
+});
+Cart.belongsTo(Customer, {
+  foreignKey: { allowNull: false },
+  onDelete: "CASCADE",
+  
+});
+
+module.exports = Cart;
