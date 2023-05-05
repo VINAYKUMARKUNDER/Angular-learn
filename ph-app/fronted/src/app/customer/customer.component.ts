@@ -56,7 +56,12 @@ export class CustomerComponent implements OnInit{
 
 
   cancelOrder(product:any){
-
+    this.http.put(`${this.URL}medicine/re/return`, product).subscribe({
+      next:res=>alert(res),
+      error:err=> alert(err)
+    })
+      console.log(product);
+      location.reload();
   }
 
 }

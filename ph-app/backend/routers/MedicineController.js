@@ -134,4 +134,23 @@ router.post('/upload/', upload.single('image'), (req, res) => {
   res.json(req.file);
 });
 
+
+
+// return a product..
+router.put('/re/return', async (req, res)=>{
+  try {
+    let product = req.body;
+    console.log(product)
+    const updatedUnitData= await db.query(`UPDATE medicine SET unit = unit + ${product.unit} WHERE id = ${product.id}`, (err, result)=>{});
+    const updatedLeafData= await db.query(`UPDATE medicine SET totalLeafInOneBox = totalLeafInOneBox + ${product.totalLeafInOneBox} WHERE id = ${product.id}`, (err, result)=>{});
+    const deletedData= await db.query(`DELETE FROM customer_order_history WHERE medicineId=${product.id}`, (err, result)=>{});
+
+      return res.status(200).json('data return successfully...');
+    
+  } catch (error) {
+    return res.status(500).json('Internal server error...');
+  }
+ 
+})
+
 module.exports = router;
