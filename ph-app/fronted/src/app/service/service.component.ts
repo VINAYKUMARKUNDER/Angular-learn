@@ -69,12 +69,8 @@ export class ServiceComponent implements OnInit {
       medicineId:id
     }
     this.http.post(`${this.URL}cart/`,data).subscribe({
-      next:res=>{
-
-
-    },
+      next:res=>{},
       error:err=>{}
-
     })
   }
 

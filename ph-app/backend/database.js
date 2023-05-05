@@ -100,19 +100,67 @@ let genrateTable = () => {
       foreign key (medicinesId) references medicine (id)
     )`
     );
+
+    conn.query(`
+    create table Customer_Order_History (
+      orderId integer not null  AUTO_INCREMENT, 
+      customerId bigint, 
+      medicineId bigint UNIQUE, 
+      primary key (orderId),
+      foreign key (customerId) references customers (id),
+      foreign key (medicineId) references medicine (id)
+    )`
+    );
+
+    conn.query(`
+    CREATE TABLE medicineHistory (
+      id BIGINT NOT NULL AUTO_INCREMENT,
+      about VARCHAR(255),
+      image BLOB NOT NULL,
+      batchId VARCHAR(30) NOT NULL,
+      type VARCHAR(30) NOT NULL,
+      expDate DATE NOT NULL,
+      mfgCompany VARCHAR(50) NOT NULL,
+      mfgDate DATE NOT NULL,
+      unit INTEGER NOT NULL,
+      price FLOAT(53) NOT NULL,
+      productName VARCHAR(255) NOT NULL,
+      totalLeafInOneBox INTEGER NOT NULL,
+      numberOfItemInOneLeaf INTEGER NOT NULL,
+      sellerId BIGINT NOT NULL,
+      customerId BIGINT NOT NULL,
+      PRIMARY KEY (id),
+      FOREIGN KEY (sellerId) REFERENCES sellers(id),
+      FOREIGN KEY (customerId) REFERENCES customers(id)
+    )`
+  );
 };
 
 g=()=>{
+ 
+
   conn.query(`
-  create table Customer_Order_History (
-    orderId integer not null  AUTO_INCREMENT, 
-    customerId bigint, 
-    medicineId bigint UNIQUE, 
-    primary key (orderId),
-    foreign key (customerId) references customers (id),
-    foreign key (medicineId) references medicine (id)
+  CREATE TABLE medicineHistory (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    about VARCHAR(255),
+    image BLOB NOT NULL,
+    batchId VARCHAR(30) NOT NULL,
+    type VARCHAR(30) NOT NULL,
+    expDate DATE NOT NULL,
+    mfgCompany VARCHAR(50) NOT NULL,
+    mfgDate DATE NOT NULL,
+    unit INTEGER NOT NULL,
+    price FLOAT(53) NOT NULL,
+    productName VARCHAR(255) NOT NULL,
+    totalLeafInOneBox INTEGER NOT NULL,
+    numberOfItemInOneLeaf INTEGER NOT NULL,
+    sellerId BIGINT NOT NULL,
+    customerId BIGINT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (sellerId) REFERENCES sellers(id),
+    FOREIGN KEY (customerId) REFERENCES customers(id)
   )`
-  );
+);
 }
 
 
