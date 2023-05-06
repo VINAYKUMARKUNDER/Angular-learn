@@ -109,7 +109,7 @@
                 >
                 View
               </button>
-              <button class="btn btn1 btn-success" (click)="addProductInCart(product.id)" (click)="openPopUp()" >
+              <button class="btn btn1 btn-success"  (click)="updateMedicineId(product.id)" >
                 Add Cart
               </button>
 
@@ -152,6 +152,16 @@
       <h2>thank you.</h2>
       <p>Your details has been successfully submitted. Thanks.</p>
       <button type="button" (click)="closePopUp()">Ok</button>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <div class="container">
+    <div class="leaf" id="leaf">
+      <input type="number" placeholder="Enter number of leaf." (click)="openLeafPopUp()" [(ngModel)]="numberOfLeaf">
+      <button type="button" class="btn btn-success" (click)="closeLeafPopUp()">Ok</button>
     </div>
   </div>
 </section>

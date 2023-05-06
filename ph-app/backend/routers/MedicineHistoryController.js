@@ -4,7 +4,7 @@ const router = express.Router();
 const multer = require('multer');
 const app = express();
 // app.use(cors());
-const MedicineHistory = require("../models/MedicineHistoryModuleModel");
+const MedicineHistory = require("../models/MedicineHistoryModule");
 
 const db = require("../database");
 

@@ -50,6 +50,11 @@ const Medicine = db.define(
       type:DataTypes.INTEGER,
       allowNull:false
     },
+    image:
+    {
+      type: DataTypes.TEXT,
+      allowNull:true
+    },
     about: {
       type: DataTypes.STRING,
       allowNull: true,

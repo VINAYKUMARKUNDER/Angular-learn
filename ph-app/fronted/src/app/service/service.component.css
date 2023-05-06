@@ -144,6 +144,31 @@ img:hover {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+
+
+.leaf{
+  width: 400px;
+  background: rgb(218, 207, 207);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%,50%);
+  text-align: center;
+  padding: 0 30px 30px;
+  transform: translate(-50%, -50%) scale(0.1);
+  /* color: #fff; */
+  /* visibility: hidden; */
+  transition:  transform 0.4s, top 0.4s;
+  border-radius: 10px;
+}
+
+.leaf-open{
+  visibility: visible;
+  transform: translate(-50%,50%) scale(1);
+  top: 40%;
+  background-color: gray;
+}
+
 .main-view{
   /* width: 600px;
   background-color: red;

@@ -9,6 +9,7 @@ const InvoiceRouter = require('./routers/InvoiceController.js');
 const InventoryRouter = require('./routers/InventoryController.js');
 const CartRouter = require('./routers/CartController.js');
 const Customer_Order_History = require('./routers/CustomerOrderHistoryController.js')
+const medicineHistory = require('./routers/MedicineHistoryController.js')
 const db = require('./database.js');
 
 app.use(cors());
@@ -21,6 +22,7 @@ app.use('/api/v1/invoice', InvoiceRouter);
 app.use('/api/v1/inventory', InventoryRouter);
 app.use('/api/v1/cart', CartRouter);
 app.use('/api/v1/order', Customer_Order_History);
+app.use('/api/v1/medicinehistory',medicineHistory);
 
 app.listen(3000,()=>{
     console.log('port is running...');

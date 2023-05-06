@@ -2,6 +2,7 @@ const { DataTypes } = require("sequelize");
 const db = require("../database");
 const Seller = require("./SellerModel");
 const Customer = require("./CustomerModel");
+const Medicine = require('./MedicineModel')
 
 const MedicineHistory = db.define(
   "MedicineHistory",
@@ -64,5 +65,6 @@ const MedicineHistory = db.define(
 
 MedicineHistory.belongsTo(Seller, { foreignKey: "sellerId" });
 MedicineHistory.belongsTo(Customer, { foreignKey: "customerId" });
+MedicineHistory.belongsTo(Medicine, { foreignKey: "medicineId" });
 
 module.exports = MedicineHistory;

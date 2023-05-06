@@ -140,25 +140,18 @@ g=()=>{
  
 
   conn.query(`
-  CREATE TABLE medicineHistory (
+  CREATE TABLE Tool (
     id BIGINT NOT NULL AUTO_INCREMENT,
+    productName VARCHAR(50) NOT NULL,
     about VARCHAR(255),
     image BLOB NOT NULL,
-    batchId VARCHAR(30) NOT NULL,
     type VARCHAR(30) NOT NULL,
-    expDate DATE NOT NULL,
-    mfgCompany VARCHAR(50) NOT NULL,
-    mfgDate DATE NOT NULL,
+    companyName VARCHAR(50) NOT NULL,
     unit INTEGER NOT NULL,
-    price FLOAT(53) NOT NULL,
-    productName VARCHAR(255) NOT NULL,
-    totalLeafInOneBox INTEGER NOT NULL,
-    numberOfItemInOneLeaf INTEGER NOT NULL,
+    branchName VARCHAR(50),
     sellerId BIGINT NOT NULL,
-    customerId BIGINT NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (sellerId) REFERENCES sellers(id),
-    FOREIGN KEY (customerId) REFERENCES customers(id)
+    FOREIGN KEY (sellerId) REFERENCES sellers(id)
   )`
 );
 }
