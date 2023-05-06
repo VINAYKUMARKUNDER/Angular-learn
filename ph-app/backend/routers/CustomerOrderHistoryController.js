@@ -24,8 +24,8 @@ router.get('/', async (req,res)=>{
 router.get('/:customerId', async (req,res)=>{
     try {
 
-        const medicineData = await db.query(`select orderId,medicine.* from customer_order_history left join medicine  
-        ON customer_order_history.medicineId=medicine.id AND customer_order_history.customerID=${req.params.customerId}`, (err, result)=>{
+        const medicineData = await db.query(`select orderId,medicinehistory.* from customer_order_history left join medicinehistory  
+        ON customer_order_history.medicineId=medicinehistory.id AND customer_order_history.customerID=${req.params.customerId}`, (err, result)=>{
 
         })
         return res.status(200).json(medicineData);

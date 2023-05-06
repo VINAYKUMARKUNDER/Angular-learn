@@ -24,7 +24,7 @@ app.use('/api/v1/inventory', InventoryRouter);
 app.use('/api/v1/cart', CartRouter);
 app.use('/api/v1/order', Customer_Order_History);
 app.use('/api/v1/medicinehistory',medicineHistory);
-app.use('/api/v1/tool',ToolRouter);
+app.use('/api/v1/tools',ToolRouter);
 
 app.listen(3000,()=>{
     console.log('port is running...');

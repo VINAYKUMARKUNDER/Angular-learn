@@ -92,7 +92,7 @@ export class ServiceComponent implements OnInit {
 
         let data ={
           customerId:this.getOneMedicine.customerId,
-          // medicineId:this.getOneMedicine.medicineId
+          medicineId:this.medicineId
         }
 
 
@@ -106,14 +106,14 @@ export class ServiceComponent implements OnInit {
             error: (err) => {},
           });
 
-          // this.http
-          // .post(`${this.URL}cart/`, data)
-          // .subscribe({
-          //   next: (res) => {
-          //     console.log(res)
-          //   },
-          //   error: (err) => {console.log(res)},
-          // });
+          this.http
+          .post(`${this.URL}cart/`, data)
+          .subscribe({
+            next: (res) => {
+              console.log(res)
+            },
+            error: (err) => {console.log(res)},
+          });
       },
       error: (err) => {},
     });

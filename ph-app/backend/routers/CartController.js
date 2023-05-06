@@ -29,7 +29,7 @@ router.get('/:customerId', async (req,res)=>{
 
         });
 
-        const medicineData = await db.query(`select medicine.* from cart left join medicine  ON cart.medicineId=medicine.id AND cart.customerID=${req.params.customerId}`, (err, result)=>{
+        const medicineData = await db.query(`select medicinehistory.* from cart left join medicinehistory  ON cart.medicineId=medicinehistory.medicineId AND cart.customerID=${req.params.customerId}`, (err, result)=>{
 
         })
 

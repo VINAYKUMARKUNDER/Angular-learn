@@ -33,6 +33,7 @@ export class CartComponent implements OnInit{
     getAllCartData(){
       this.http.get(`${this.URL}cart/${1}`).subscribe({
         next:res=>{
+          console.log(res)
          this.products=res;
          this.productsLen= this.products[1];
         }

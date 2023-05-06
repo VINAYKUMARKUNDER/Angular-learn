@@ -198,4 +198,14 @@ export class AdminComponent implements OnInit {
   }
 
 
+  // get all tools
+  getAllTools(){
+    this.http.get(`${this.URL}tools/`).subscribe({
+      next:res=>{
+      },
+      error:err=> alert(err)
+    })
+  }
+
+
 }

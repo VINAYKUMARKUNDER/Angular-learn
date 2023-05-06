@@ -31,6 +31,10 @@
       <button class="btn1 btn-primary" (click)="clickStatusView('alert')">
         expire product
       </button>
+
+      <button class="btn1 btn-primary" (click)="clickStatusView('tools')" (click)="getAllTools()">
+        all tools
+      </button>
     </div>
   </div>
 
@@ -68,7 +72,7 @@
         </div>
 
       </div>
-     
+
     </div>
   </section>
 
@@ -567,4 +571,14 @@
       </div>
     </div>
   </div>
+
+
+  <!-- tools section -->
+  <section *ngIf="status==='tools'">
+    <h1>U r in tools section</h1>
+  </section>
 </div>
+
+
+
+
