@@ -8,6 +8,8 @@ import { Todo } from 'src/app/Todo';
 })
 export class MyTodoComponent implements OnInit {
   todos: Todo[];
+
+
   constructor() {
     this.todos = [
       {
@@ -38,6 +40,15 @@ export class MyTodoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.todos);
+
+// fetch('https://dummyjson.com/todos')
+// .then(res => res.json())
+// .then(console.log);
+  }
+
+
+
+  deleteTodo(todo:Todo){
+    this.todos.splice(this.todos.indexOf(todo),1);
   }
 }
