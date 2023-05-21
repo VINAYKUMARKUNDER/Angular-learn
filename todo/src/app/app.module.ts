@@ -3,11 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { MyTodoComponent } from './component/my-todo/my-todo.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MyTodoComponent
+    MyTodoComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule
