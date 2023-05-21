@@ -1,6 +1,8 @@
 const DataTypes = require("sequelize");
 const db = require("../database");
 
+
+
 const Cart = db.define(
   "cart",
   {

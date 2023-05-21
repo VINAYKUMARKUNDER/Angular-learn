@@ -97,7 +97,7 @@ let genrateTable = () => {
       medicineId bigint UNIQUE, 
       primary key (cartId),
       foreign key (customerId) references customers (id),
-      foreign key (medicinesId) references medicine (id)
+      foreign key (medicineId) references medicine (id)
     )`
     );
 
@@ -116,7 +116,6 @@ let genrateTable = () => {
     CREATE TABLE medicineHistory (
       id BIGINT NOT NULL AUTO_INCREMENT,
       about VARCHAR(255),
-      image BLOB NOT NULL,
       batchId VARCHAR(30) NOT NULL,
       type VARCHAR(30) NOT NULL,
       expDate DATE NOT NULL,
