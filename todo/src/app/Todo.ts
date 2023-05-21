@@ -4,6 +4,8 @@ export class Todo {
   desc: string;
   active: boolean;
 
+// constructor(){};
+
   constructor(id: number, title: string, desc: string, active: boolean) {
     this.id = id;
     this.title = title;

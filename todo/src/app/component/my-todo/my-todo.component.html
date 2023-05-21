@@ -1,1 +1,9 @@
-<p>my-todo works!</p>
+
+
+<ul *ngFor="let todo of todos">
+  <li>{{todo.id}}</li>
+  <li>{{todo.title}}</li>
+  <li>{{todo.desc}}</li>
+  <li>{{todo.active}}</li>
+
+</ul>
